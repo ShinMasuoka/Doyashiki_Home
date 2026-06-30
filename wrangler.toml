@@ -1,0 +1,8 @@
+name = "doyashiki-home"
+compatibility_date = "2025-01-01"
+
+# Cloudflare Workers 静的アセット配信
+# `npm run build` 後に `npx wrangler deploy` でデプロイ
+# または Cloudflare Pages の Git Integration で自動デプロイ（推奨）
+[assets]
+directory = "./dist"

@@ -1,0 +1,104 @@
+{
+  "seo": {
+    "title": "Osaji no Yado Doyashiki — A 300-Year-Old Farmhouse, All to Yourself.",
+    "description": "Nishiawakura, Okayama. One group per night in a historic kominka. River play, open-fire cooking, irori hearth, stargazing. Slow down and reconnect."
+  },
+  "hero": {
+    "label": "Osaji no Yado · Doyashiki",
+    "heading": "Live, Play,\nand Be.",
+    "sub": "A 300-year-old farmhouse in a mountain village — just for you.\nSwim in the river. Gather around the fire. Sleep under the stars."
+  },
+  "intro": {
+    "body": [
+      "Welcome to Osaji no Yado Doyashiki, nestled in Nishiawakura village, Okayama. We offer exclusive use of a 300-year-old farmhouse — one group per night. No elaborate service, no kaiseki cuisine. Just the sound of the river, the warmth of the irori hearth, and a sky full of stars.",
+      "One guest called it \"a place that feels like Japan's original landscape.\""
+    ]
+  },
+  "experiencesHeading": "How to Spend Your Time",
+  "experiences": [
+    {
+      "id": "river",
+      "title": "Play in the River",
+      "body": "A clear mountain stream runs right in front of the house. Shriek at the cold water. Let the kids run wild.",
+      "quote": "\"The kids were so excited about river swimming. We could splash around right in front of the house.\"",
+      "imageCount": 1
+    },
+    {
+      "id": "engawa",
+      "title": "Rest on the Engawa",
+      "body": "Cook rice in a hagama pot, slice watermelon on the veranda. Gaze at the mountains and do absolutely nothing. That's the treat.",
+      "quote": "\"The kids got to cook rice in the hagama. The adults enjoyed drinks surrounded by nature.\"",
+      "imageCount": 2
+    },
+    {
+      "id": "fire",
+      "title": "Gather Around the Fire",
+      "body": "At night, we light the irori hearth. Talk by firelight alone. You'll find yourself a little more honest than usual.",
+      "quote": "\"Around the irori fire, even my usually-quiet mother wouldn't stop talking.\"",
+      "imageCount": 1
+    },
+    {
+      "id": "forest",
+      "title": "Feel the Forest",
+      "body": "Nishiawakura sits deep in the Chugoku mountains. Venture to the Wakasugi Natural Forest for a walk among ancient trees.",
+      "quote": "\"There's an old-growth forest just 10 minutes by car — the forest bathing was wonderful.\"",
+      "imageCount": 1
+    }
+  ],
+  "reservation": {
+    "heading": "This Summer, With Family.",
+    "sub": "Fireflies and starlit skies are waiting.",
+    "primaryLabel": "Check Availability & Book",
+    "othersLabel": "Also available on"
+  },
+  "faqHeading": "FAQ",
+  "faq": [
+    {
+      "q": "Are meals provided?",
+      "a": "We offer accommodation only. The kitchen is yours to use freely. We can help arrange grocery runs."
+    },
+    {
+      "q": "What should I bring?",
+      "a": "Food, your favourite drinks, and insect repellent if bugs bother you."
+    },
+    {
+      "q": "Is it okay to bring young children?",
+      "a": "Absolutely. The whole house is yours, so children can be themselves. Adult supervision required for river play."
+    },
+    {
+      "q": "Can I get there by train?",
+      "a": "About 10 minutes' walk from Awakura Onsen Station. We can discuss pick-up for grocery trips."
+    },
+    {
+      "q": "Are there insects?",
+      "a": "Yes — it's an old farmhouse. Stink bugs are common (the village calls them 'Kame-chan'). We'll show you the local trick for handling them."
+    },
+    {
+      "q": "Is it cold / hot?",
+      "a": "Summer nights are cool. Heating is provided in winter."
+    }
+  ],
+  "access": {
+    "sectionLabel": "ACCESS",
+    "heading": "Getting Here",
+    "mapLabel": "Doyashiki Parking",
+    "mapLink": "https://www.google.com/maps/search/?api=1&query=58MP%2BH9%20%E8%A5%BF%E7%B2%9F%E5%80%89%E6%9D%91%20%E5%B2%A1%E5%B1%B1%E7%9C%8C",
+    "car": "About 5 minutes from Nishiawakura IC (Tottori Expressway). Free parking. Easy to reach despite the mountain setting.",
+    "train": "About 10 minutes' walk from Awakura Onsen Station (Chizu Express). Pick-up available on request."
+  },
+  "footer": {
+    "location": "Nishiawakura, Okayama"
+  },
+  "menu": {
+    "title": "Doyashiki",
+    "items": [
+      { "label": "Home", "href": "#top" },
+      { "label": "About", "href": "#" },
+      { "label": "Experiences", "href": "#experiences" },
+      { "label": "Rooms", "href": "#" },
+      { "label": "Access", "href": "#access" },
+      { "label": "FAQ", "href": "#faq" }
+    ],
+    "ctaLabel": "Book Now"
+  }
+}

@@ -1,0 +1,62 @@
+---
+/**
+ * 実写真差し替え前の仮表示用コンポーネント。
+ * 本番写真ができたら <Image> コンポーネント（astro:assets）に差し替える。
+ * 差し替え方法は CLAUDE.md の「写真の差し替え手順」を参照。
+ */
+interface Props {
+  label: string;
+  aspectRatio?: string;
+  class?: string;
+  style?: string;
+}
+
+const {
+  label,
+  aspectRatio = '3/2',
+  class: className = '',
+  style = '',
+} = Astro.props;
+---
+
+<div
+  class:list={['img-placeholder', className]}
+  style={`aspect-ratio:${aspectRatio};${style}`}
+  aria-label={label}
+  role="img"
+>
+  <span class="img-placeholder-label">{label}</span>
+</div>
+
+<style>
+  .img-placeholder {
+    width: 100%;
+    background: #DDD9CE;
+    border-radius: var(--radius-image);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .img-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(47, 42, 34, 0.03) 0 8px,
+      transparent 8px 16px
+    );
+  }
+
+  .img-placeholder-label {
+    font-size: 11px;
+    color: #9A8F80;
+    text-align: center;
+    padding: 8px 16px;
+    z-index: 1;
+    line-height: 1.6;
+  }
+</style>

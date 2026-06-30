@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&amp;family=Zen+Kaku+Gothic+New:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{margin:0;background:#e7e0d2}
+  image-slot{display:block}
+  @keyframes kb{from{transform:scale(1.03)}to{transform:scale(1.14)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+</style>
+</helmet>
+<div style="position: absolute; left: 76px; top: -2px" data-screen-label="Home">
+<div style="background:#F8F4EA;color:#2F2A22;min-height:100vh;max-width:480px;margin:0 auto;position:relative;overflow-x:hidden;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:400;line-height:1.85;box-shadow:0 0 50px rgba(47,42,34,.22)">
+
+  <!-- ===== HEADER ===== -->
+  <header style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:13px 18px;background:rgba(255,253,247,.9);backdrop-filter:blur(10px);border-bottom:.5px solid rgba(47,42,34,.12)">
+    <a href="#top" style="text-decoration:none;color:#2F2A22;font-family:'Zen Old Mincho',serif;font-size:20px;font-weight:600;letter-spacing:.14em">おさじの宿・堂屋敷</a>
+    <div style="display:flex;align-items:center;gap:14px">
+      <span style="border:.5px solid #D8CDB4;border-radius:20px;padding:4px 11px;font-size:12px;color:#2F2A22;letter-spacing:.04em">日本語 <span style="color:#B3A98F">｜ EN</span></span>
+      <button onClick="{{ openMenu }}" aria-label="menu" style="display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px 2px">
+        <span style="display:block;width:24px;height:1.5px;background:#2F2A22"></span>
+        <span style="display:block;width:24px;height:1.5px;background:#2F2A22"></span>
+        <span style="display:block;width:16px;height:1.5px;background:#2F2A22"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO (image OR video box, Ken Burns) ===== -->
+  <section id="top" style="position:relative;height:84vh;min-height:560px;overflow:hidden;background:#e7edd8">
+    <!-- swap image-slot for a <video> later (short, muted, autoplay, looping); this slot is the still fallback -->
+    <image-slot id="doyashiki-hero" shape="rect" controls="top" placeholder="ヒーロー写真／将来ドローン動画（縁側でスイカ・川あそび・明るい自然光）" style="position:absolute;inset:0;width:100%;height:100%;animation:kb 22s ease-out infinite alternate;animation-play-state:var(--kbState,running)"></image-slot>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,34,24,.06) 0%,rgba(40,34,24,.12) 45%,rgba(40,34,24,.62) 100%);pointer-events:none"></div>
+    <img src="logo.png" alt="おさじ ロゴ" style="position:absolute;top:16px;right:18px;z-index:3;width:52px;height:52px;filter:brightness(0) invert(1);opacity:.95;pointer-events:none">
+    <div style="position:absolute;left:0;right:0;bottom:0;padding:0 22px 30px;z-index:2;color:#FCF8EF;animation:fadeUp 1.1s ease both">
+      <div style="font-size:11.5px;letter-spacing:.3em;margin-bottom:16px;opacity:.92;font-weight:500">おさじの宿・堂屋敷</div>
+      <h1 style="margin:0;font-family:'Zen Old Mincho',serif;font-weight:500;font-size:32px;line-height:1.42;letter-spacing:.03em;text-shadow:0 2px 22px rgba(0,0,0,.42)">自然のなかで、<br>暮らすように遊ぶ。</h1><p style="margin:14px 0 18px;font-size:14px;line-height:1.9;opacity:.95;max-width:310px">山間の村、築三百年の古民家を、一日一組で。<br>川で遊んで、火を囲んで、星を見上げて。</p>
+      
+      <div style="display:flex;flex-wrap:wrap;gap:7px">
+        
+        
+        
+        
+        
+      </div>
+    </div>
+    <div style="position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:5px;color:#FCF8EF;animation:bob 2.4s ease-in-out infinite">
+      <span style="font-size:9.5px;letter-spacing:.26em;opacity:.8">SCROLL</span>
+      <span style="display:block;width:1px;height:30px;background:linear-gradient(#FCF8EF,transparent)"></span>
+    </div>
+  </section>
+
+  <!-- ===== HERO SUB IMAGE ===== -->
+  <section style="background:#FFFDF7;padding:24px 22px 4px">
+    <image-slot id="hero-sub" shape="rounded" radius="10" placeholder="写真：ヒーロー下のカット（自然光・横長）" style="width:100%;aspect-ratio:3/2"></image-slot>
+  </section>
+
+  <!-- ===== INTRO ===== -->
+  <section style="background:#FFFDF7;padding:42px 26px 46px;border-bottom:.5px solid rgba(47,42,34,.08)">
+    <div style="max-width:360px;margin:0 auto;text-align:center">
+      <span style="display:block;width:32px;height:1px;background:var(--accent,#E0563B);margin:0 auto 22px"></span>
+      <div style="font-size:15px;line-height:2.05;text-align:left;color:#3F3A30">
+        <p style="margin:0 0 16px">はじめまして、岡山県西粟倉村にある、おさじの宿・堂屋敷です。築三百年と言われる古民家を、一日一組で貸し切る宿です。派手なもてなしも、豪華な料理もありません。あるのは、川のせせらぎと、囲炉裏の火と、夜になると降ってくる星。</p>
+        <p style="margin:0">あるゲストは、ここを「日本の原風景のような場所」と呼びました。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCES ===== -->
+  <section id="experiences" style="background:#FFFDF7">
+    <div style="text-align:center;padding:30px 22px 8px">
+      <p style="margin:0 0 5px;font-size:11px;letter-spacing:.3em;color:var(--accent,#E0563B);font-weight:600">EXPERIENCES</p>
+      <h2 style="margin:0;font-family:'Zen Old Mincho',serif;font-weight:500;font-size:23px;letter-spacing:.06em">ここでの過ごし方</h2>
+    </div>
+
+    <!-- 1. river -->
+    <article style="padding:24px 22px;border-bottom:.5px solid rgba(47,42,34,.08)">
+      <image-slot id="exp-river" shape="rounded" radius="10" placeholder="写真：川あそび・沢トレッキング" style="width:100%;aspect-ratio:3/2;margin-bottom:16px"></image-slot>
+      <h3 style="margin:0 0 8px;font-family:'Zen Old Mincho',serif;font-weight:600;font-size:20px;letter-spacing:.05em">川で、遊ぶ</h3>
+      <p style="margin:0;font-size:14px;line-height:1.95;color:#3F3A30">宿の前には清流が流れています。冷たい水に歓声があがります。</p>
+      <blockquote style="margin:14px 0 0;padding-left:12px;border-left:2px solid #6F9A3E;font-family:'Zen Old Mincho',serif;font-size:13.5px;line-height:1.75;color:#5D6A3D">「子どもたちは川遊びを楽しみに。宿の前の川で気軽に遊べました」<span style="display:block;margin-top:4px;font-family:'Zen Kaku Gothic New',sans-serif;font-size:11px;color:#9AA07D">ご宿泊のお客様より</span></blockquote>
+    </article>
+
+    <!-- 2. hagama / engawa -->
+    <article style="padding:24px 22px;border-bottom:.5px solid rgba(47,42,34,.08)">
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+        <image-slot id="exp-hagama" shape="rounded" radius="10" placeholder="写真：羽釜ごはん" style="width:100%;aspect-ratio:3/2"></image-slot>
+        <image-slot id="exp-suika" shape="rounded" radius="10" placeholder="写真：縁側でスイカ" style="width:100%;aspect-ratio:3/2"></image-slot>
+      </div>
+      <h3 style="margin:0 0 8px;font-family:'Zen Old Mincho',serif;font-weight:600;font-size:20px;letter-spacing:.05em">縁側で、ひと休み</h3>
+      <p style="margin:0;font-size:14px;line-height:1.95;color:#3F3A30">羽釜でごはんを炊いて、縁側でスイカ。山を眺めて、何もしない時間も、ごちそうです。</p>
+      <blockquote style="margin:14px 0 0;padding-left:12px;border-left:2px solid #6F9A3E;font-family:'Zen Old Mincho',serif;font-size:13.5px;line-height:1.75;color:#5D6A3D">「羽釜のお米炊きを子どもにもさせてもらい、大人は大自然の中でお酒を」<span style="display:block;margin-top:4px;font-family:'Zen Kaku Gothic New',sans-serif;font-size:11px;color:#9AA07D">ご宿泊のお客様より</span></blockquote>
+    </article>
+
+    <!-- 3. fire -->
+    <article style="padding:24px 22px;border-bottom:.5px solid rgba(47,42,34,.08)">
+      <image-slot id="exp-fire" shape="rounded" radius="10" placeholder="写真：囲炉裏を囲む夜" style="width:100%;aspect-ratio:3/2;margin-bottom:16px"></image-slot>
+      <h3 style="margin:0 0 8px;font-family:'Zen Old Mincho',serif;font-weight:600;font-size:20px;letter-spacing:.05em">火を、囲む</h3>
+      <p style="margin:0;font-size:14px;line-height:1.95;color:#3F3A30">夜は囲炉裏に火を入れて。炭の灯りだけで、語らって。いつもより少し、素直になれる時間。</p>
+      <blockquote style="margin:14px 0 0;padding-left:12px;border-left:2px solid #6F9A3E;font-family:'Zen Old Mincho',serif;font-size:13.5px;line-height:1.75;color:#5D6A3D">「囲炉裏で火を囲むと、いつになく母も饒舌だった」<span style="display: block; margin-top: 4px; font-family: &quot;Zen Kaku Gothic New&quot;, sans-serif; font-size: 11px; color: rgb(154, 160, 125);">ご宿泊のお客様より</span></blockquote>
+    </article>
+
+    <!-- 4. village -->
+    <article style="padding:24px 22px">
+      <image-slot id="exp-village" shape="rounded" radius="10" placeholder="写真：村の手しごと体験" style="width:100%;aspect-ratio:3/2;margin-bottom:16px"></image-slot>
+      <h3 style="margin:0 0 8px;font-family:'Zen Old Mincho',serif;font-weight:600;font-size:20px;letter-spacing:.05em">森を体感する</h3>
+      <p style="margin:0;font-size:14px;line-height:1.95;color:#3F3A30">西粟倉は、中国山地の山間の村。「若杉天然林」まで足を伸ばせば、森の散策を楽しめます。</p>
+      <blockquote style="margin:14px 0 0;padding-left:12px;border-left:2px solid #6F9A3E;font-family:'Zen Old Mincho',serif;font-size:13.5px;line-height:1.75;color:#5D6A3D">「施設から車で10分ほどのところに原生林があり、森林浴ができた」<span style="display: block; margin-top: 4px; font-family: &quot;Zen Kaku Gothic New&quot;, sans-serif; font-size: 11px; color: rgb(154, 160, 125);">ご宿泊のお客様より</span></blockquote>
+    </article>
+  </section>
+
+  <!-- ===== RESERVATION (green panel) ===== -->
+  <section id="reserve" style="background:#EEF3E0;padding:40px 26px 44px;text-align:center">
+    <p style="margin:0 0 5px;font-family:'Zen Old Mincho',serif;font-size:19px;color:#3D4A26;letter-spacing:.05em">この夏、家族で。</p>
+    <p style="margin:0 0 22px;font-size:12.5px;color:#6C7553">星空とほたるの季節も、ぜひ。</p>
+    <a href="#" style="display:flex;align-items:center;justify-content:center;gap:9px;background:var(--accent,#E0563B);color:#FFFDF7;text-decoration:none;padding:18px 22px;border-radius:8px;font-size:15.5px;font-weight:600;letter-spacing:.03em;box-shadow:0 8px 20px color-mix(in srgb,var(--accent,#E0563B) 34%,transparent)">
+      <span style="font-size:12px">▶</span>公式予約ページで空室を見る
+    </a>
+    <p style="margin:20px 0 10px;font-size:12px;color:#7A7263">各サイトからもご予約いただけます</p>
+    <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap">
+      <a href="#" style="text-decoration:none;color:#3F3A30;border:.5px solid rgba(47,42,34,.2);border-radius:999px;padding:8px 16px;font-size:13px">Airbnb</a>
+      <a href="#" style="text-decoration:none;color:#3F3A30;border:.5px solid rgba(47,42,34,.2);border-radius:999px;padding:8px 16px;font-size:13px">じゃらん</a>
+      <a href="#" style="text-decoration:none;color:#3F3A30;border:.5px solid rgba(47,42,34,.2);border-radius:999px;padding:8px 16px;font-size:13px">Tabilmo</a>
+    </div>
+    
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" style="background:#FFFDF7;padding:42px 24px 46px;border-top:.5px solid rgba(47,42,34,.08)">
+    <h2 style="margin:0 0 22px;text-align:center;font-family:'Zen Old Mincho',serif;font-weight:500;font-size:22px;letter-spacing:.06em">よくあるご質問</h2>
+    <div style="max-width:400px;margin:0 auto">
+      <div style="border-bottom:.5px solid rgba(47,42,34,.1)">
+        <button onClick="{{ toggle0 }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:none;cursor:pointer;padding:16px 0;text-align:left;color:#2F2A22;font-family:inherit;font-size:14.5px;font-weight:500">食事は出ますか？<span style="color:var(--accent,#E0563B);font-size:18px">+</span></button>
+        <sc-if value="{{ open0 }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:0 0 16px;font-size:13.5px;color:#5D564A;line-height:1.85">素泊まりです。台所をご自由にお使いください。食材の買い出しはご相談に乗ります。</p></sc-if>
+      </div>
+      <div style="border-bottom:.5px solid rgba(47,42,34,.1)">
+        <button onClick="{{ toggle1 }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:none;cursor:pointer;padding:16px 0;text-align:left;color:#2F2A22;font-family:inherit;font-size:14.5px;font-weight:500">何を持っていけばいい？<span style="color:var(--accent,#E0563B);font-size:18px">+</span></button>
+        <sc-if value="{{ open1 }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:0 0 16px;font-size:13.5px;color:#5D564A;line-height:1.85">食材、お好みの飲みもの。虫が苦手な方は対策グッズがあると安心です。</p></sc-if>
+      </div>
+      <div style="border-bottom:.5px solid rgba(47,42,34,.1)">
+        <button onClick="{{ toggle2 }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:none;cursor:pointer;padding:16px 0;text-align:left;color:#2F2A22;font-family:inherit;font-size:14.5px;font-weight:500">子ども連れでも大丈夫？<span style="color:var(--accent,#E0563B);font-size:18px">+</span></button>
+        <sc-if value="{{ open2 }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:0 0 16px;font-size:13.5px;color:#5D564A;line-height:1.85">はい。一棟貸し切りなので、気兼ねなくお過ごしいただけます。川あそびは大人の付き添いを。</p></sc-if>
+      </div>
+      <div style="border-bottom:.5px solid rgba(47,42,34,.1)">
+        <button onClick="{{ toggle3 }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:none;cursor:pointer;padding:16px 0;text-align:left;color:#2F2A22;font-family:inherit;font-size:14.5px;font-weight:500">電車だけで行けますか？<span style="color:var(--accent,#E0563B);font-size:18px">+</span></button>
+        <sc-if value="{{ open3 }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:0 0 16px;font-size:13.5px;color:#5D564A;line-height:1.85">駅から徒歩10分。買い出しのため、送迎をご相談ください。</p></sc-if>
+      </div>
+      <div style="border-bottom:.5px solid rgba(47,42,34,.1)">
+        <button onClick="{{ toggle4 }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:none;cursor:pointer;padding:16px 0;text-align:left;color:#2F2A22;font-family:inherit;font-size:14.5px;font-weight:500">虫は出ますか？<span style="color:var(--accent,#E0563B);font-size:18px">+</span></button>
+        <sc-if value="{{ open4 }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:0 0 16px;font-size:13.5px;color:#5D564A;line-height:1.85">はい、古民家ですので。とくにカメムシ（村では「カメちゃん」）。上手なお引き取りの作法もお伝えします。</p></sc-if>
+      </div>
+      <div>
+        <button onClick="{{ toggle5 }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:none;cursor:pointer;padding:16px 0;text-align:left;color:#2F2A22;font-family:inherit;font-size:14.5px;font-weight:500">寒くない／暑くない？<span style="color:var(--accent,#E0563B);font-size:18px">+</span></button>
+        <sc-if value="{{ open5 }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:0 0 16px;font-size:13.5px;color:#5D564A;line-height:1.85">夏の夜は涼しく、冬は暖房を用意しています。</p></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACCESS ===== -->
+  <section id="access" style="background:#F8F4EA;padding:42px 26px 44px">
+    <div style="text-align:center;margin-bottom:22px">
+      <p style="margin:0 0 5px;font-size:11px;letter-spacing:.3em;color:var(--accent,#E0563B);font-weight:600">ACCESS</p>
+      <h2 style="margin:0;font-family:'Zen Old Mincho',serif;font-weight:500;font-size:22px;letter-spacing:.06em">アクセス</h2>
+    </div>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=58MP%2BH9%20%E8%A5%BF%E7%B2%9F%E5%80%89%E6%9D%91%20%E5%B2%A1%E5%B1%B1%E7%9C%8C" target="_blank" rel="noopener" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:#EEF0E4;border:.5px solid rgba(47,42,34,.16);border-radius:10px;height:180px;margin-bottom:22px;background-image:repeating-linear-gradient(45deg,rgba(47,42,34,.025) 0 11px,transparent 11px 22px)">
+      <span style="width:38px;height:38px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--accent,#E0563B);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(47,42,34,.18)"><span style="width:13px;height:13px;border-radius:50%;background:#FFFDF7;transform:rotate(45deg)"></span></span>
+      <span style="font-family:'Zen Old Mincho',serif;font-size:15px;color:#3F3A30;letter-spacing:.04em">堂屋敷 駐車場</span>
+      <span style="font-size:12px;color:#6F7D4A;letter-spacing:.03em">Googleマップで開く →</span>
+    </a>
+    <div style="display:flex;flex-direction:column;gap:14px;font-size:13.5px;line-height:1.8;color:#3F3A30">
+      <div style="display:flex;gap:12px"><span style="color:var(--accent,#E0563B);font-family:'Zen Old Mincho',serif;font-size:15px;min-width:2.4em">車</span><span>鳥取道「西粟倉IC」より約5分。駐車場無料。山里ですが、ICから近く着きやすい立地です。</span></div>
+      <div style="display:flex;gap:12px"><span style="color:var(--accent,#E0563B);font-family:'Zen Old Mincho',serif;font-size:15px;min-width:2.4em">電車</span><span>「あわくら温泉駅」より徒歩約10分。送迎のご相談も承ります。</span></div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="background:#FFFDF7;padding:20px 22px;border-top:.5px solid rgba(47,42,34,.1);display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#8A8170">
+    
+    <span style="display:flex;align-items:center;gap:9px"><img src="logo.png" alt="おさじ ロゴ" style="width:28px;height:28px;filter:brightness(0)"><span style="font-family:'Zen Old Mincho',serif;font-size:14px;color:#5D564A;letter-spacing:.08em">おさじの宿・堂屋敷</span></span><span style="display:flex;align-items:center;gap:5px">岡山県・西粟倉村</span>
+  </footer>
+
+  <!-- ===== MENU OVERLAY ===== -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:60;background:#2F2A22;color:#F8F4EA;display:flex;flex-direction:column;animation:fadeUp .35s ease both">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:.5px solid rgba(255,255,255,.12)">
+        <span style="font-family:'Zen Old Mincho',serif;font-size:19px;letter-spacing:.14em">堂屋敷</span>
+        <button onClick="{{ closeMenu }}" aria-label="close" style="background:none;border:none;cursor:pointer;color:#F8F4EA;font-size:26px;line-height:1;padding:4px 8px">×</button>
+      </div>
+      <nav style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:0 32px;font-family:'Zen Old Mincho',serif">
+        <a href="#top" onClick="{{ closeMenu }}" style="text-decoration:none;color:#F8F4EA;font-size:24px;padding:11px 0;display:flex;justify-content:space-between;align-items:baseline">トップ<span style="font-size:12px;opacity:.4">01</span></a>
+        <a href="#" onClick="{{ closeMenu }}" style="text-decoration:none;color:#F8F4EA;font-size:24px;padding:11px 0;display:flex;justify-content:space-between;align-items:baseline">この家のこと<span style="font-size:12px;opacity:.4">02</span></a>
+        <a href="#experiences" onClick="{{ closeMenu }}" style="text-decoration:none;color:#F8F4EA;font-size:24px;padding:11px 0;display:flex;justify-content:space-between;align-items:baseline">体験<span style="font-size:12px;opacity:.4">03</span></a>
+        <a href="#" onClick="{{ closeMenu }}" style="text-decoration:none;color:#F8F4EA;font-size:24px;padding:11px 0;display:flex;justify-content:space-between;align-items:baseline">客室<span style="font-size:12px;opacity:.4">04</span></a>
+        <a href="#access" onClick="{{ closeMenu }}" style="text-decoration:none;color:#F8F4EA;font-size:24px;padding:11px 0;display:flex;justify-content:space-between;align-items:baseline">アクセス<span style="font-size:12px;opacity:.4">05</span></a>
+        <a href="#faq" onClick="{{ closeMenu }}" style="text-decoration:none;color:#F8F4EA;font-size:24px;padding:11px 0;display:flex;justify-content:space-between;align-items:baseline">FAQ<span style="font-size:12px;opacity:.4">06</span></a>
+      </nav>
+      <a href="#reserve" onClick="{{ closeMenu }}" style="margin:0 24px 30px;text-align:center;background:var(--accent,#E0563B);color:#FCF8EF;text-decoration:none;padding:17px;border-radius:8px;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:600;font-size:15px">空室を見る・予約する</a>
+    </div>
+  </sc-if>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:932},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#E0563B&quot;,&quot;options&quot;:[&quot;#E0563B&quot;,&quot;#C16A35&quot;,&quot;#6F9A3E&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;見た目&quot;},&quot;heroMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;見た目&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen: false, faqOpen: -1 };
+  renderVals() {
+    const accent = this.props.accent || '#E0563B';
+    const kb = this.props.heroMotion === false ? 'paused' : 'running';
+    const o = this.state.faqOpen;
+    const tg = (i) => () => this.setState(s => ({ faqOpen: s.faqOpen === i ? -1 : i }));
+    const faq = {};
+    for (let i = 0; i < 6; i++) { faq['open' + i] = o === i; faq['toggle' + i] = tg(i); }
+    return {
+      rootVars: `--accent:${accent};--kbState:${kb}`,
+      menuOpen: this.state.menuOpen,
+      openMenu: () => this.setState({ menuOpen: true }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      ...faq
+    };
+  }
+}
+</script>
+</body>
+</html>

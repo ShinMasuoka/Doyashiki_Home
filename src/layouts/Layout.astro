@@ -1,0 +1,131 @@
+---
+import '../styles/tokens.css';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: 'ja' | 'en';
+  ogImage?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title,
+  description,
+  locale,
+  ogImage = '/og-default.png',
+  canonicalPath = Astro.url.pathname,
+} = Astro.props;
+
+const siteUrl = Astro.site ?? 'https://doyashiki.com';
+const canonicalUrl = new URL(canonicalPath, siteUrl).href;
+const altLocale = locale === 'ja' ? 'en' : 'ja';
+const altPath = canonicalPath.replace(`/${locale}/`, `/${altLocale}/`);
+const altUrl = new URL(altPath, siteUrl).href;
+const ogImageUrl = new URL(ogImage, siteUrl).href;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#F8F4EA" />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang={locale} href={canonicalUrl} />
+    <link rel="alternate" hreflang={altLocale} href={altUrl} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/ja/', siteUrl).href} />
+
+    <!-- OGP -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content={locale === 'ja' ? 'ja_JP' : 'en_US'} />
+    <meta property="og:locale:alternate" content={altLocale === 'ja' ? 'ja_JP' : 'en_US'} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        background: #e7e0d2;
+        font-family: var(--font-gothic);
+        font-weight: 400;
+        line-height: var(--leading-base);
+        color: var(--color-text);
+      }
+
+      img,
+      video {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      button {
+        font-family: inherit;
+      }
+
+      /* スクロール位置をヘッダー分だけオフセット */
+      [id] {
+        scroll-margin-top: 60px;
+      }
+
+      @keyframes kb {
+        from { transform: scale(1.03); }
+        to   { transform: scale(1.14); }
+      }
+
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to   { opacity: 1; transform: none; }
+      }
+
+      @keyframes bob {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(7px); }
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

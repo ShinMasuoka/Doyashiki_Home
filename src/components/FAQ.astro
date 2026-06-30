@@ -1,0 +1,136 @@
+---
+interface FaqItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  heading: string;
+  items: FaqItem[];
+}
+
+const { heading, items } = Astro.props;
+---
+
+<section id="faq" class="faq-section">
+  <h2 class="faq-heading">{heading}</h2>
+  <div class="faq-list">
+    {items.map((item, i) => (
+      <div class={`faq-item${i === items.length - 1 ? ' faq-item--last' : ''}`}>
+        <button
+          class="faq-question"
+          aria-expanded="false"
+          aria-controls={`faq-answer-${i}`}
+          id={`faq-btn-${i}`}
+        >
+          <span>{item.q}</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div
+          id={`faq-answer-${i}`}
+          class="faq-answer"
+          role="region"
+          aria-labelledby={`faq-btn-${i}`}
+          hidden
+        >
+          <p>{item.a}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    background: var(--color-panel);
+    padding: var(--py-section) 24px 46px;
+    border-top: 0.5px solid var(--color-border);
+  }
+
+  .faq-heading {
+    margin: 0 0 22px;
+    text-align: center;
+    font-family: var(--font-mincho);
+    font-weight: 500;
+    font-size: var(--text-h2);
+    letter-spacing: var(--tracking-heading);
+  }
+
+  .faq-list {
+    max-width: var(--max-width-faq);
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 0.5px solid var(--color-border-mid);
+  }
+
+  .faq-item--last {
+    border-bottom: none;
+  }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 16px 0;
+    text-align: left;
+    color: var(--color-text);
+    font-size: 14.5px;
+    font-weight: 500;
+  }
+
+  .faq-icon {
+    color: var(--color-accent);
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  .faq-question[aria-expanded="true"] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    overflow: hidden;
+  }
+
+  .faq-answer p {
+    margin: 0;
+    padding: 0 0 16px;
+    font-size: var(--text-body-xs);
+    color: var(--color-text-weak);
+    line-height: var(--leading-base);
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.faq-question');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      const answerId = btn.getAttribute('aria-controls')!;
+      const answer = document.getElementById(answerId)!;
+
+      // 全て閉じる（単一展開）
+      buttons.forEach((b) => {
+        const aid = b.getAttribute('aria-controls')!;
+        const ans = document.getElementById(aid)!;
+        b.setAttribute('aria-expanded', 'false');
+        ans.hidden = true;
+      });
+
+      // 同じ項目は開閉トグル
+      if (!isExpanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.hidden = false;
+      }
+    });
+  });
+</script>
