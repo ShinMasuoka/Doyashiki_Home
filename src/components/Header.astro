@@ -6,7 +6,8 @@ interface Props {
 
 const { locale, siteName } = Astro.props;
 const altLocale = locale === 'ja' ? 'en' : 'ja';
-const altHref = `/${altLocale}/`;
+// 日本語はルート直下（無接頭辞）、英語は /en/ 配下
+const altHref = altLocale === 'ja' ? '/' : `/${altLocale}/`;
 const langPillText = locale === 'ja' ? '日本語' : 'EN';
 const langAltText = locale === 'ja' ? 'EN' : '日本語';
 ---

@@ -1,5 +1,21 @@
 # おさじの宿・堂屋敷 — サイト制作ガイド
 
+## 会話開始時のルール
+
+**必ず最初に次の質問をすること：**
+「作業メモ（`作業メモ/` フォルダ）を参照しますか？前回までの作業履歴を確認できます。」
+
+参照する場合は `作業メモ/` 内のファイルをすべて読んでから作業を開始すること。
+
+## 作業メモの自動記録ルール
+
+以下のタイミングで、当日の作業メモ（`作業メモ/YYYY-MM-DD.md`）が未作成の場合は**依頼がなくても自動的に作成**すること：
+
+1. `git push` を実行した直後
+2. ユーザーが「終わり」「ありがとう」「お疲れ」「またね」「バイ」など会話終了を示す言葉を使ったとき
+
+メモには当日行ったすべての変更・作業内容を記録する。
+
 ## フォルダ構成
 
 ```
@@ -25,11 +41,11 @@ src/
 ├── layouts/
 │   └── Layout.astro    ← 全ページ共通枠（SEO head・フォント・CSS）
 ├── pages/
-│   ├── index.astro     ← /  → /ja/ にリダイレクト
-│   ├── ja/index.astro  ← 日本語トップページ
-│   ├── ja/legal.astro
-│   ├── ja/privacy.astro
-│   ├── en/index.astro  ← 英語トップページ
+│   ├── index.astro     ← /  日本語トップページ（デフォルトロケール、無接頭辞）
+│   ├── legal.astro     ← /legal/
+│   ├── privacy.astro   ← /privacy/
+│   ├── summercamp2026.astro  ← /summercamp2026/（単一ファイル完結、姉妹プロジェクト統合分）
+│   ├── en/index.astro  ← /en/ 英語トップページ
 │   ├── en/legal.astro
 │   └── en/privacy.astro
 └── styles/
@@ -45,16 +61,19 @@ src/
 
 ## ページ一覧
 
+日本語がデフォルトロケール（無接頭辞）、英語のみ `/en/` を付与する非対称構造。
+
 | URL | ファイル | 状態 |
 |-----|---------|------|
-| `/ja/` | `pages/ja/index.astro` | ✅ 完成（写真は仮）|
-| `/en/` | `pages/en/index.astro` | ✅ 完成（写真は仮）|
-| `/ja/legal/` | `pages/ja/legal.astro` | 枠のみ |
-| `/en/legal/` | `pages/en/legal.astro` | 枠のみ |
-| `/ja/privacy/` | `pages/ja/privacy.astro` | 枠のみ |
-| `/en/privacy/` | `pages/en/privacy.astro` | 枠のみ |
-| `/ja/about/` | 未作成 | - |
-| `/ja/rooms/` | 未作成 | - |
+| `/` | `pages/index.astro` | ✅ 完成（写真は仮）|
+| `/en/` | `pages/en/index.astro` | 未作成（後日制作） |
+| `/legal/` | `pages/legal.astro` | 未作成 |
+| `/en/legal/` | `pages/en/legal.astro` | 未作成 |
+| `/privacy/` | `pages/privacy.astro` | 未作成 |
+| `/en/privacy/` | `pages/en/privacy.astro` | 未作成 |
+| `/summercamp2026/` | `pages/summercamp2026.astro` | ✅ 完成（姉妹プロジェクト統合分、日本語のみ）|
+| `/about/` | 未作成 | - |
+| `/rooms/` | 未作成 | - |
 
 ## デザインの基本
 

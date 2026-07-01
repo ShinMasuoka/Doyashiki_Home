@@ -1,4 +1,579 @@
 ---
-// ルートアクセス → 日本語版トップへリダイレクト
-return Astro.redirect('/ja/', 301);
+import { getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BookingButtons from '../components/BookingButtons.astro';
+import FAQ from '../components/FAQ.astro';
+import MenuOverlay from '../components/MenuOverlay.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+
+import fireImg from '../assets/images/experiences/fire.jpg';
+import riverImg from '../assets/images/experiences/river.jpg';
+import forestImg from '../assets/images/experiences/forest.jpg';
+import suikaImg from '../assets/images/experiences/suika.jpg';
+import hagamaImg from '../assets/images/experiences/hagama.jpg';
+import heroSubImg from '../assets/images/hero/hero-sub.jpg';
+import heroImg from '../assets/images/hero/hero.jpg';
+
+// 実写真が揃ったものだけここに追加していく
+const expImages: Record<string, ImageMetadata | undefined> = {
+  river: riverImg,
+  fire: fireImg,
+  forest: forestImg,
+};
+
+// 体験②（縁側）の2枚 — 羽釜は写真待ち
+const engawaImages = {
+  hagama: hagamaImg as ImageMetadata,
+  suika: suikaImg as ImageMetadata,
+};
+
+const data = (await getEntry('home', 'ja'))!.data;
+const locale = 'ja' as const;
+const siteName = 'おさじの宿・堂屋敷';
 ---
+
+<Layout
+  title={data.seo.title}
+  description={data.seo.description}
+  locale={locale}
+  canonicalPath="/"
+>
+  <!-- ページコンテナ -->
+  <div class="page-wrap">
+    <Header locale={locale} siteName={siteName} />
+
+    <!-- ===== ヒーロー ===== -->
+    <section id="top" class="hero">
+      <!-- 将来ドローン動画に差し替える。静止画フォールバックはここに残す -->
+      <div class="hero-media">
+        <Image
+          src={heroImg}
+          alt="西粟倉の大木、空へ広がる枝"
+          width={1080}
+          loading="eager"
+          class="hero-img"
+        />
+      </div>
+      <!-- グラデーションオーバーレイ -->
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <!-- ロゴ（白） -->
+      <img
+        src="/logo.png"
+        alt="おさじ ロゴ"
+        class="hero-logo"
+        width="52"
+        height="52"
+        loading="eager"
+      />
+      <!-- テキスト群 -->
+      <div class="hero-text">
+        <p class="hero-label">{data.hero.label}</p>
+        <h1 class="hero-heading">
+          {data.hero.heading.split('\n').map((line, i) => (
+            <>{line}{i < data.hero.heading.split('\n').length - 1 && <br />}</>
+          ))}
+        </h1>
+        <p class="hero-sub">
+          {data.hero.sub.split('\n').map((line, i) => (
+            <>{line}{i < data.hero.sub.split('\n').length - 1 && <br />}</>
+          ))}
+        </p>
+      </div>
+      <!-- スクロール誘導 -->
+      <div class="scroll-hint" aria-hidden="true">
+        <span class="scroll-text">SCROLL</span>
+        <span class="scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- ===== ヒーロー下サブ画像 ===== -->
+    <section class="sub-photo">
+      <Image
+        src={heroSubImg}
+        alt="田んぼと茅葺き屋根の堂屋敷外観"
+        width={960}
+        class="sub-photo-img"
+      />
+    </section>
+
+    <!-- ===== 導入文 ===== -->
+    <section class="intro">
+      <div class="intro-inner">
+        <span class="intro-ornament" aria-hidden="true"></span>
+        <div class="intro-body">
+          {data.intro.body.map((p) => <p>{p}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 体験 ===== -->
+    <section id="experiences" class="experiences">
+      <div class="section-head">
+        <p class="section-label">EXPERIENCES</p>
+        <h2 class="section-title">{data.experiencesHeading}</h2>
+      </div>
+
+      {data.experiences.map((exp, i) => (
+        <article class:list={['exp-article', i < data.experiences.length - 1 && 'exp-article--border']}>
+          {exp.imageCount === 2 ? (
+            <div class="exp-images-double">
+              {engawaImages.hagama
+                ? <Image src={engawaImages.hagama} alt="羽釜ごはん" width={960} class="real-img" />
+                : <ImagePlaceholder label="写真：羽釜ごはん" />
+              }
+              {engawaImages.suika
+                ? <Image src={engawaImages.suika} alt="縁側でスイカ" width={960} class="real-img" />
+                : <ImagePlaceholder label="写真：縁側でスイカ" />
+              }
+            </div>
+          ) : expImages[exp.id] ? (
+            <Image
+              src={expImages[exp.id]!}
+              alt={exp.title}
+              width={960}
+              class="exp-img real-img"
+            />
+          ) : (
+            <ImagePlaceholder label={`写真：${exp.title}`} class="exp-img" />
+          )}
+          <h3 class="exp-title">{exp.title}</h3>
+          <p class="exp-body">{exp.body}</p>
+          <blockquote class="exp-quote">
+            {exp.quote}
+            <span class="exp-quote-from">ご宿泊のお客様より</span>
+          </blockquote>
+        </article>
+      ))}
+    </section>
+
+    <!-- ===== 予約 ===== -->
+    <section id="reserve" class="reservation">
+      <p class="reservation-heading">{data.reservation.heading}</p>
+      <p class="reservation-sub">{data.reservation.sub}</p>
+      <BookingButtons locale={locale} />
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <FAQ heading={data.faqHeading} items={data.faq} />
+
+    <!-- ===== アクセス ===== -->
+    <section id="access" class="access">
+      <div class="section-head">
+        <p class="section-label">{data.access.sectionLabel}</p>
+        <h2 class="section-title">{data.access.heading}</h2>
+      </div>
+      {data.access.navNote && (
+        <div class="nav-note">
+          <span class="nav-note-icon" aria-hidden="true">⚠</span>
+          {data.access.navNote}
+        </div>
+      )}
+
+      <div class="map-wrap">
+        {/* 本番: Google Maps「共有→地図を埋め込む」で取得した pb= URL に差し替える */}
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6521.8092188944165!2d134.335937!3d35.18393!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3555a7e30fc65d57%3A0x7bacfd2d26350731!2z5aCC5bGL5pW3IOmnkOi7iuWgtA!5e0!3m2!1sja!2sus!4v1782795740401!5m2!1sja!2sus"
+          class="map-iframe"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="堂屋敷駐車場 地図"
+        ></iframe>
+        <a
+          href={data.access.mapLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="map-open-link"
+        >
+          「堂屋敷駐車場」をGoogleマップで開く →
+        </a>
+      </div>
+      <div class="access-info">
+        <div class="access-row">
+          <span class="access-icon">車</span>
+          <span>{data.access.car}</span>
+        </div>
+        <div class="access-row">
+          <span class="access-icon">電車</span>
+          <span>{data.access.train}</span>
+        </div>
+      </div>
+    </section>
+
+    <Footer
+      siteName={siteName}
+      location={data.footer.location}
+      locale={locale}
+    />
+  </div>
+
+  <!-- メニューオーバーレイ（ページコンテナ外に置く） -->
+  <MenuOverlay
+    title={data.menu.title}
+    items={data.menu.items}
+    ctaLabel={data.menu.ctaLabel}
+  />
+</Layout>
+
+<style>
+  .page-wrap {
+    background: var(--color-bg);
+    color: var(--color-text);
+    min-height: 100vh;
+    max-width: var(--max-width-page);
+    margin: 0 auto;
+    position: relative;
+    overflow-x: hidden;
+    font-family: var(--font-gothic);
+    box-shadow: var(--shadow-page);
+  }
+
+  /* ===== ヒーロー ===== */
+  .hero {
+    position: relative;
+    height: 84vh;
+    min-height: 560px;
+    overflow: hidden;
+    background: #e7edd8;
+  }
+
+  .hero-media {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0;
+    animation: kb var(--duration-kb) ease-out infinite alternate;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(40, 34, 24, 0.06) 0%,
+      rgba(40, 34, 24, 0.12) 45%,
+      rgba(40, 34, 24, 0.62) 100%
+    );
+    pointer-events: none;
+  }
+
+  .hero-logo {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    z-index: 3;
+    filter: brightness(0) invert(1);
+    opacity: 0.95;
+    pointer-events: none;
+  }
+
+  .hero-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 22px 30px;
+    z-index: 2;
+    color: var(--color-text-hero);
+    animation: fadeUp var(--duration-fade) ease both;
+  }
+
+  .hero-label {
+    margin: 0 0 16px;
+    font-size: var(--text-label-sm);
+    letter-spacing: var(--tracking-label);
+    opacity: 0.92;
+    font-weight: 500;
+  }
+
+  .hero-heading {
+    margin: 0;
+    font-family: var(--font-mincho);
+    font-weight: 500;
+    font-size: var(--text-h1);
+    line-height: var(--leading-hero);
+    letter-spacing: var(--tracking-hero);
+    text-shadow: 0 2px 22px rgba(0, 0, 0, 0.42);
+  }
+
+  .hero-sub {
+    margin: 14px 0 18px;
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-hero-sub);
+    opacity: 0.95;
+    max-width: 310px;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: var(--color-text-hero);
+    animation: bob var(--duration-bob) ease-in-out infinite;
+  }
+
+  .scroll-text {
+    font-size: 9.5px;
+    letter-spacing: 0.26em;
+    opacity: 0.8;
+  }
+
+  .scroll-line {
+    display: block;
+    width: 1px;
+    height: 30px;
+    background: linear-gradient(var(--color-text-hero), transparent);
+  }
+
+  /* ===== ヒーロー下サブ画像 ===== */
+  .sub-photo {
+    background: var(--color-panel);
+    padding: 16px 0 0;
+  }
+
+  /* ===== 導入文 ===== */
+  .intro {
+    background: var(--color-panel);
+    padding: 42px 26px 46px;
+    border-bottom: 0.5px solid var(--color-border);
+  }
+
+  .intro-inner {
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .intro-ornament {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--color-accent);
+    margin: 0 auto 22px;
+  }
+
+  .intro-body {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    text-align: left;
+    color: var(--color-text-sub);
+  }
+
+  .intro-body p {
+    margin: 0 0 16px;
+  }
+
+  .intro-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ===== 体験 ===== */
+  .experiences {
+    background: var(--color-panel);
+  }
+
+  .section-head {
+    text-align: center;
+    padding: var(--py-section-sm) var(--px-section) 8px;
+  }
+
+  .section-label {
+    margin: 0 0 5px;
+    font-size: var(--text-label);
+    letter-spacing: var(--tracking-label);
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .section-title {
+    margin: 0;
+    font-family: var(--font-mincho);
+    font-weight: 500;
+    font-size: var(--text-h2-lg);
+    letter-spacing: var(--tracking-heading);
+  }
+
+  .exp-article {
+    padding: 24px var(--px-section);
+  }
+
+  .exp-article--border {
+    border-bottom: 0.5px solid var(--color-border);
+  }
+
+  .exp-img {
+    margin-bottom: 16px;
+  }
+
+  .real-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-image);
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
+  }
+
+  .sub-photo-img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
+    display: block;
+  }
+
+  .exp-images-double {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .exp-title {
+    margin: 0 0 8px;
+    font-family: var(--font-mincho);
+    font-weight: 600;
+    font-size: var(--text-h3);
+    letter-spacing: var(--tracking-heading-sm);
+  }
+
+  .exp-body {
+    margin: 0;
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-exp);
+    color: var(--color-text-sub);
+  }
+
+  .exp-quote {
+    margin: 14px 0 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--color-leaf);
+    font-family: var(--font-mincho);
+    font-size: var(--text-quote);
+    line-height: var(--leading-quote);
+    color: var(--color-leaf-dark);
+  }
+
+  .exp-quote-from {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--font-gothic);
+    font-size: var(--text-meta);
+    color: var(--color-leaf-pale);
+  }
+
+  /* ===== 予約 ===== */
+  .reservation {
+    background: var(--color-panel-reservation);
+    padding: 40px 26px 44px;
+    text-align: center;
+  }
+
+  .reservation-heading {
+    margin: 0 0 5px;
+    font-family: var(--font-mincho);
+    font-size: 19px;
+    color: var(--color-leaf-deeper);
+    letter-spacing: 0.05em;
+  }
+
+  .reservation-sub {
+    margin: 0 0 22px;
+    font-size: var(--text-sub);
+    color: var(--color-leaf-mid);
+  }
+
+  /* ===== アクセス ===== */
+  .access {
+    background: var(--color-bg);
+    padding: var(--py-section) var(--px-section-lg) 44px;
+  }
+
+  .nav-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: #FFF8E8;
+    border: 1px solid #E8C86A;
+    border-radius: var(--radius-card);
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.75;
+    color: #5A4A1A;
+  }
+
+  .nav-note-icon {
+    flex-shrink: 0;
+    font-size: 14px;
+    margin-top: 1px;
+  }
+
+  .map-wrap {
+    margin-bottom: 22px;
+    border-radius: var(--radius-image);
+    overflow: hidden;
+    border: 0.5px solid var(--color-border-strong);
+  }
+
+  .map-iframe {
+    display: block;
+    width: 100%;
+    height: 220px;
+    border: none;
+  }
+
+  .map-open-link {
+    display: block;
+    background: var(--color-panel-map);
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    color: #6F7D4A;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    border-top: 0.5px solid var(--color-border);
+  }
+
+  .map-open-link:hover {
+    text-decoration: underline;
+  }
+
+  .access-info {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-size: var(--text-body-xs);
+    line-height: 1.8;
+    color: var(--color-text-sub);
+  }
+
+  .access-row {
+    display: flex;
+    gap: 12px;
+  }
+
+  .access-icon {
+    color: var(--color-accent);
+    font-family: var(--font-mincho);
+    font-size: 15px;
+    min-width: 2.4em;
+  }
+</style>

@@ -3,7 +3,7 @@
  * URLを変更するときはここだけ編集する
  */
 export const BOOKING_URLS = {
-  official: '', // 自社予約（じゃらんエンジン）← 本番URLに差し替え（空文字 = 整備中表示）
+  official: 'https://www.jhpds.net/osaji-doyashiki/uw/uwp3100/uww3101.do?yadNo=342414', // 自社予約（じゃらんエンジン）
   airbnb: 'https://airbnb.jp/h/doyashiki',
   jalan: 'https://www.jalan.net/yad342414/?screenId=UWW3001&yadNo=342414&stayMonth=&dateUndecided=1&stayYear=&stayDay=&minPrice=0&maxPrice=999999&rootCd=7701&yadoDetailMode=1&callbackHistFlg=1&smlCd=330808&distCd=01',
   tabilmo: 'https://tabilmo.com/villas/chugoku/okayama/area-234/old-house/2343',

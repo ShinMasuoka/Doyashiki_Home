@@ -20,5 +20,8 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 
+# 作業メモ（セッション間の引き継ぎ用・Git管理外）
+作業メモ/
+
 # editor
 .vscode/settings.json

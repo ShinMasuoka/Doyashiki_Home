@@ -7,6 +7,8 @@ interface Props {
   locale: 'ja' | 'en';
   ogImage?: string;
   canonicalPath?: string;
+  /** 相手側ロケールのページが実在するか（未公開の間はfalseにしてhreflangを出さない） */
+  altLocaleAvailable?: boolean;
 }
 
 const {
@@ -15,12 +17,14 @@ const {
   locale,
   ogImage = '/og-default.png',
   canonicalPath = Astro.url.pathname,
+  altLocaleAvailable = false,
 } = Astro.props;
 
-const siteUrl = Astro.site ?? 'https://doyashiki.com';
+const siteUrl = Astro.site ?? 'https://yado.osaji.jp';
 const canonicalUrl = new URL(canonicalPath, siteUrl).href;
 const altLocale = locale === 'ja' ? 'en' : 'ja';
-const altPath = canonicalPath.replace(`/${locale}/`, `/${altLocale}/`);
+// 日本語はルート直下（無接頭辞）、英語は /en/ 配下という非対称構造のための変換
+const altPath = locale === 'ja' ? `/en${canonicalPath}` : (canonicalPath.replace(/^\/en/, '') || '/');
 const altUrl = new URL(altPath, siteUrl).href;
 const ogImageUrl = new URL(ogImage, siteUrl).href;
 ---
@@ -39,8 +43,8 @@ const ogImageUrl = new URL(ogImage, siteUrl).href;
 
     <!-- hreflang -->
     <link rel="alternate" hreflang={locale} href={canonicalUrl} />
-    <link rel="alternate" hreflang={altLocale} href={altUrl} />
-    <link rel="alternate" hreflang="x-default" href={new URL('/ja/', siteUrl).href} />
+    {altLocaleAvailable && <link rel="alternate" hreflang={altLocale} href={altUrl} />}
+    <link rel="alternate" hreflang="x-default" href={new URL('/', siteUrl).href} />
 
     <!-- OGP -->
     <meta property="og:type" content="website" />
@@ -49,7 +53,7 @@ const ogImageUrl = new URL(ogImage, siteUrl).href;
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:locale" content={locale === 'ja' ? 'ja_JP' : 'en_US'} />
-    <meta property="og:locale:alternate" content={altLocale === 'ja' ? 'ja_JP' : 'en_US'} />
+    {altLocaleAvailable && <meta property="og:locale:alternate" content={altLocale === 'ja' ? 'ja_JP' : 'en_US'} />}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />

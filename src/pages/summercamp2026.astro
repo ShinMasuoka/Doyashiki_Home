@@ -1,0 +1,653 @@
+---
+---
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/summercamp2026/logo_osaji.svg" />
+<title>自分を見つける夏合宿 in にしあわくら 2026 | 西粟倉村</title>
+<link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gd:#166534;--gm:#16a34a;--gl:#4ade80;--gp:#dcfce7;--earth:#b5835a;--earth-l:#f2e0cc;--cream:#faf7f2;--td:#1a1a1a;--tm:#4a4a4a;--tl:#888;--w:#ffffff}
+html{scroll-behavior:smooth}
+body{font-family:"Zen Maru Gothic",sans-serif;background:var(--cream);color:var(--td);line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,247,242,0.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(45,106,79,0.15);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:"RocknRoll One",sans-serif;font-size:1rem;font-weight:700;color:var(--gd);text-decoration:none;line-height:1.3}
+.nav-logo span{display:block;font-size:0.65rem;font-weight:400;color:var(--tl);letter-spacing:0.08em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:0.8rem;color:var(--tm);text-decoration:none;letter-spacing:0.05em;transition:color 0.2s}
+.nav-links a:hover{color:var(--gm)}
+.nav-cta{background:var(--gm) !important;color:var(--w) !important;padding:0.45rem 1.1rem;border-radius:50px;font-size:0.8rem !important}
+#hero{padding-top:64px;padding-bottom:0;position:relative;height:100vh;overflow:hidden}
+.hero-bg{width:100%;height:100%;background:linear-gradient(160deg,#1a4d35,#0d2b1e);display:flex;align-items:center;justify-content:center;flex-direction:column;color:rgba(255,255,255,0.2);font-size:0.85rem;gap:1rem}
+.hero-bg svg{width:56px;height:56px;opacity:0.25}
+.hero-bg picture,.hero-bg img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,0.45) 100%)}
+.hero-text{position:absolute;bottom:0;left:0;right:0;padding:4rem 5rem;color:var(--w)}
+.hero-badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);font-size:0.72rem;font-weight:700;letter-spacing:0.12em;padding:0.35rem 0.9rem;border-radius:50px;margin-bottom:1.5rem}
+.hero-title{font-family:"RocknRoll One",sans-serif;font-size:3.2rem;font-weight:700;line-height:1.5;margin-bottom:1.5rem}
+.hero-title em{font-style:normal}
+.hero-meta-row{display:flex;gap:2rem;margin-bottom:2rem;flex-wrap:wrap}
+.hero-meta-item{display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;opacity:0.9}
+.hero-meta-item svg{width:16px;height:16px;flex-shrink:0}
+.hero-buttons{display:flex;gap:1rem}
+.btn-primary{background:var(--gl);color:var(--w);padding:0.9rem 2.2rem;border-radius:50px;font-size:0.95rem;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:0.5rem}
+.btn-primary:hover{background:var(--gm);transform:translateY(-1px)}
+.hero-seats{position:absolute;top:calc(64px + 2rem);right:2rem;background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:1.2rem 1.5rem;color:white;text-align:center}
+.seats-label{font-size:0.72rem;opacity:0.7;letter-spacing:0.06em;margin-bottom:0.3rem}
+.seats-num{font-family:"RocknRoll One",sans-serif;font-size:2.2rem;font-weight:700;line-height:1}
+.seats-sub{font-size:0.78rem;opacity:0.8}
+.scroll-indicator{position:absolute;bottom:1.6rem;left:50%;display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.85);font-size:0.7rem;font-weight:700;letter-spacing:0.2em;animation:scroll-bounce 2.2s ease-in-out infinite}
+.scroll-indicator svg{width:18px;height:18px}
+@keyframes scroll-bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+.photo-band{display:grid;grid-template-columns:2fr 1fr 1fr;height:340px;gap:3px}
+.photo-band-item{overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;font-size:0.75rem}
+.photo-band-item svg{opacity:0.5}
+.photo-band-item .ph-label{position:absolute;bottom:0.7rem;left:0.7rem;background:rgba(255,255,255,0.9);color:var(--gd);font-size:0.72rem;font-weight:700;padding:0.2rem 0.7rem;border-radius:50px}
+.photo-band-item img{width:100%;height:100%;object-fit:cover}
+section{padding:6rem 0}
+.container{max-width:1080px;margin:0 auto;padding:0 2rem}
+.section-title{font-family:"RocknRoll One",sans-serif;font-size:2rem;font-weight:700;color:var(--gd);line-height:1.5;margin-bottom:3rem}
+#worries{background:var(--w)}
+.worries-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.2rem}
+.worry-card{background:var(--cream);border:1.5px solid rgba(45,106,79,0.12);border-radius:12px;padding:1.5rem;display:flex;align-items:flex-start;gap:0.8rem;transition:border-color 0.2s,transform 0.15s}
+.worry-card:hover{border-color:var(--gl);transform:translateY(-2px)}
+.worry-check{width:22px;height:22px;border-radius:50%;background:var(--gp);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.worry-check svg{width:12px;height:12px;color:var(--gm)}
+.worry-text{font-size:0.9rem;color:var(--tm);line-height:1.6}
+#why{background:var(--cream)}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.why-card{background:var(--w);border-radius:16px;overflow:hidden;border:1px solid rgba(45,106,79,0.1);transition:transform 0.2s,box-shadow 0.2s}
+.why-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(45,106,79,0.1)}
+.why-card-photo{position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;font-size:0.75rem;min-height:120px}
+.why-card-photo img{width:100%;height:auto;display:block}
+.why-card-photo svg{opacity:0.5}
+.why-card-photo .photo-tag{position:absolute;top:0.8rem;left:0.8rem;background:var(--gm);color:var(--w);font-size:0.7rem;font-weight:700;padding:0.2rem 0.7rem;border-radius:50px}
+.why-card-body{padding:1.5rem}
+.why-card-body h3{font-family:"RocknRoll One",sans-serif;font-size:1.1rem;color:var(--gd);margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem}
+.why-card-body p{font-size:0.88rem;color:var(--tm);line-height:1.7}
+#days{background:var(--gd);color:var(--w)}
+#days .section-title{color:var(--w)}
+.days-tabs{display:flex;gap:0;margin-bottom:3rem;border:1.5px solid rgba(255,255,255,0.2);border-radius:50px;padding:4px;width:fit-content}
+.day-tab{padding:0.6rem 1.8rem;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;transition:all 0.2s;color:rgba(255,255,255,0.6);border:none;background:transparent}
+.day-tab.active{background:var(--gl);color:var(--w)}
+.day-content{display:none}
+.day-content.active{display:block}
+.day-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.day-photos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.day-photo-main{grid-column:1/-1;aspect-ratio:16/9;background:rgba(255,255,255,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;color:rgba(255,255,255,0.3);font-size:0.78rem;border:1.5px dashed rgba(255,255,255,0.15);overflow:hidden}
+.day-photo-main img{width:100%;height:100%;object-fit:cover}
+.day-photo-main svg{width:32px;height:32px}
+.day-photo-sub{aspect-ratio:4/3;background:rgba(255,255,255,0.07);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;color:rgba(255,255,255,0.25);font-size:0.72rem;border:1.5px dashed rgba(255,255,255,0.1);overflow:hidden}
+.day-photo-sub img{width:100%;height:100%;object-fit:cover}
+.day-photo-sub svg{width:24px;height:24px}
+.day-img-full{display:block;width:100%;border-radius:16px}
+.day-theme{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(82,183,136,0.2);color:var(--gl);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;padding:0.35rem 0.9rem;border-radius:50px;margin-bottom:1.2rem}
+.day-title{font-family:"RocknRoll One",sans-serif;font-size:1.8rem;color:var(--w);margin-bottom:1rem;line-height:1.4}
+.day-desc{font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:1.5rem}
+.day-activities{display:flex;flex-wrap:wrap;gap:0.5rem}
+.activity-tag{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.85);font-size:0.78rem;padding:0.3rem 0.8rem;border-radius:50px}
+#gallery{background:var(--w);padding:0}
+.gallery-header{padding:6rem 2rem 3rem;max-width:1080px;margin:0 auto}
+.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.g-item{overflow:hidden;position:relative;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;transition:transform 0.3s}
+.g-item:hover{transform:scale(1.02);z-index:1}
+.g-item img{width:100%;height:100%;object-fit:cover}
+.g-item svg{opacity:0.45}
+.g-item .g-label{position:absolute;bottom:0.8rem;left:0.8rem;background:rgba(255,255,255,0.92);color:var(--gd);font-size:0.72rem;font-weight:700;padding:0.25rem 0.7rem;border-radius:50px}
+.g-item .g-num{position:absolute;top:0.8rem;right:0.8rem;background:rgba(255,255,255,0.7);color:var(--tm);font-size:0.65rem;padding:0.15rem 0.5rem;border-radius:50px}
+.g-std{height:220px}
+.g-tall{height:444px;grid-row:span 2}
+.g-wide{height:220px;grid-column:span 2}
+.gallery-note{text-align:center;padding:1.5rem 2rem 3rem;font-size:0.82rem;color:var(--tl)}
+.sue-photo{margin-top:1.5rem;width:100%;border-radius:16px;display:block;object-fit:cover}
+@media(min-width:769px){.sue-photo{width:50%}}
+.scene-strip{background:var(--gd);padding:4rem 0;overflow:hidden}
+.scene-strip-title{text-align:center;font-family:"RocknRoll One",sans-serif;font-size:0.88rem;color:rgba(255,255,255,0.4);letter-spacing:0.25em;margin-bottom:2rem}
+.scene-scroll{display:flex;gap:8px;padding:0 2rem;overflow-x:auto;scrollbar-width:none}
+.scene-scroll::-webkit-scrollbar{display:none}
+.scene-item{flex:0 0 280px;height:188px;border-radius:10px;overflow:hidden;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;color:rgba(255,255,255,0.25);font-size:0.72rem;border:1.5px dashed rgba(255,255,255,0.1)}
+.scene-item img{width:100%;height:100%;object-fit:cover}
+.scene-item svg{width:22px;height:22px}
+#growth{background:var(--cream)}
+.growth-with-photo{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.growth-photo{aspect-ratio:3/4;background:var(--gp);border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;color:var(--gm);font-size:0.75rem}
+.growth-photo img{width:100%;height:100%;object-fit:cover}
+.growth-photo svg{opacity:0.45}
+.growth-flow{display:flex;flex-direction:column;gap:0}
+.growth-step{background:var(--w);border:1.5px solid rgba(45,106,79,0.15);border-radius:14px;padding:1.5rem 2rem;transition:border-color 0.2s,transform 0.15s}
+.growth-step:hover{border-color:var(--gl);transform:translateX(4px)}
+.growth-step-num{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;color:var(--gm);margin-bottom:0.4rem}
+.growth-step-title{font-family:"RocknRoll One",sans-serif;font-size:1.2rem;color:var(--gd)}
+.growth-arrow{font-size:1.5rem;color:var(--gl);padding:0.5rem 0;text-align:center}
+.growth-result{background:var(--gm);color:var(--w);border-radius:14px;padding:1.8rem 2rem;text-align:center}
+.growth-result-label{font-size:0.78rem;opacity:0.8;margin-bottom:0.4rem}
+.growth-result-title{font-family:"RocknRoll One",sans-serif;font-size:1.4rem}
+#testimonials{background:var(--w)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.testimonial-card{background:var(--cream);border-radius:16px;padding:2rem;border:1px solid rgba(45,106,79,0.1)}
+.testimonial-stars{color:var(--earth);font-size:1rem;margin-bottom:1rem;letter-spacing:0.1em}
+.testimonial-text{font-size:0.95rem;color:var(--td);line-height:1.8;margin-bottom:1.2rem;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:0.7rem}
+.testimonial-avatar{width:38px;height:38px;border-radius:50%;background:var(--gp);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:var(--gm);overflow:hidden;flex-shrink:0}
+.testimonial-avatar img{width:100%;height:100%;object-fit:cover}
+.testimonial-name{font-size:0.85rem;font-weight:700;color:var(--td)}
+.testimonial-role{font-size:0.75rem;color:var(--tl)}
+#staff{background:var(--cream)}
+.staff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.staff-card{background:var(--w);border-radius:16px;overflow:hidden;border:1px solid rgba(45,106,79,0.1)}
+.staff-photo{background:var(--gp);position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;color:var(--gm);font-size:0.75rem}
+.staff-photo img{width:100%;height:auto;display:block}
+.staff-photo svg{opacity:0.4}
+.staff-body{padding:1.5rem}
+.staff-name{font-family:"RocknRoll One",sans-serif;font-size:1.15rem;color:var(--gd);margin-bottom:0.2rem}
+.staff-role{font-size:0.78rem;color:var(--tl);margin-bottom:0.8rem}
+.staff-desc{font-size:0.85rem;color:var(--tm);line-height:1.7;margin-bottom:0.8rem}
+.staff-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.staff-tag{background:var(--gp);color:var(--gd);font-size:0.72rem;padding:0.2rem 0.7rem;border-radius:50px}
+#safety{background:var(--gd);color:var(--w)}
+.safety-with-photo{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.safety-photo{aspect-ratio:4/3;background:rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;color:rgba(255,255,255,0.3);font-size:0.75rem;border:1.5px dashed rgba(255,255,255,0.15)}
+.safety-photo img{width:100%;height:100%;object-fit:cover}
+.safety-photo svg{opacity:0.4}
+.safety-list{display:flex;flex-direction:column;gap:1rem}
+.safety-item{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start}
+.safety-check{width:28px;height:28px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.safety-check svg{width:14px;height:14px;color:white}
+.safety-label{font-weight:700;font-size:0.95rem;margin-bottom:0.3rem;color:var(--w)}
+.safety-desc{font-size:0.82rem;color:rgba(255,255,255,0.65);line-height:1.6}
+#overview{background:var(--w)}
+.overview-table{width:100%;border-collapse:collapse;font-size:0.92rem}
+.overview-table tr{border-bottom:1px solid rgba(45,106,79,0.1)}
+.overview-table tr:last-child{border-bottom:none}
+.overview-table th{width:180px;padding:1.2rem 1rem 1.2rem 0;font-weight:700;color:var(--gd);text-align:left;vertical-align:top}
+.overview-table td{padding:1.2rem 0;color:var(--tm);line-height:1.7}
+.price-tbd{display:inline-block;background:var(--earth-l);color:var(--earth);font-size:0.78rem;font-weight:700;padding:0.25rem 0.8rem;border-radius:50px}
+#faq{background:var(--cream)}
+.faq-list{display:flex;flex-direction:column;gap:1rem}
+.faq-item{background:var(--w);border-radius:12px;border:1px solid rgba(45,106,79,0.1);overflow:hidden}
+.faq-question{padding:1.3rem 1.5rem;font-weight:700;color:var(--gd);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:0.95rem;user-select:none}
+.faq-question svg{width:20px;height:20px;color:var(--gm);transition:transform 0.2s;flex-shrink:0}
+.faq-item.open .faq-question svg{transform:rotate(180deg)}
+.faq-answer{display:none;padding:0 1.5rem 1.3rem;font-size:0.9rem;color:var(--tm);line-height:1.8}
+.faq-item.open .faq-answer{display:block}
+#cta{background:var(--gm);text-align:center;padding:8rem 2rem;position:relative;overflow:hidden}
+.cta-bg-photo{position:absolute;inset:0;background:linear-gradient(160deg,#1e5c3e,#0d2b1e);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.1);font-size:0.8rem}
+.cta-bg-photo img{width:100%;height:100%;object-fit:cover}
+.cta-overlay{position:absolute;inset:0;background:rgba(26,61,43,0.75)}
+.cta-content{position:relative;z-index:1}
+.cta-eyebrow{font-size:0.72rem;font-weight:700;letter-spacing:0.18em;color:rgba(255,255,255,0.6);text-transform:uppercase;margin-bottom:1rem}
+.cta-title{font-family:"RocknRoll One",sans-serif;font-size:2.4rem;font-weight:700;color:var(--w);line-height:1.6;margin-bottom:1rem}
+.cta-sub{font-size:1rem;color:rgba(255,255,255,0.8);margin-bottom:0.8rem}
+.cta-seats{display:inline-block;background:rgba(255,255,255,0.15);color:var(--w);font-size:0.88rem;font-weight:700;padding:0.4rem 1.2rem;border-radius:50px;margin-bottom:2.5rem;border:1.5px solid rgba(255,255,255,0.3)}
+.cta-btn{display:inline-flex;align-items:center;gap:0.5rem;background:var(--w);color:var(--gm);font-weight:700;font-size:1rem;padding:1rem 2.5rem;border-radius:50px;text-decoration:none;transition:all 0.2s}
+.cta-btn:hover{background:var(--cream);transform:translateY(-2px)}
+footer{background:var(--gd);color:rgba(255,255,255,0.5);text-align:center;padding:2rem;font-size:0.78rem}
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.title-icon{display:inline-block;vertical-align:middle;margin-right:0.5rem;position:relative;top:-3px}
+#why,#growth,#days,#testimonials,#worries,#participant-voices,#staff,#safety,#overview,#faq{position:relative;overflow:hidden}
+.deco-bg{position:absolute;pointer-events:none;z-index:0}
+#why .container,#growth .container,#days .container,#testimonials .container,#worries .container,#participant-voices .container,#staff .container,#safety .container,#overview .container,#faq .container{position:relative;z-index:1}
+.curve-sep{display:block;overflow:hidden;line-height:0;font-size:0;margin:0;padding:0}
+.curve-sep svg{display:block;width:100%;height:64px}
+@media(max-width:768px){.curve-sep svg{height:36px}}
+@media(max-width:768px){img.deco-bg{width:150px!important;height:150px!important}}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:101}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--gd);border-radius:2px;transition:all 0.3s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(250,247,242,0.98);backdrop-filter:blur(8px);border-bottom:1px solid rgba(45,106,79,0.15);padding:0.5rem 1.5rem 1.2rem;z-index:99;flex-direction:column}
+.nav-mobile.open{display:flex}
+.nav-mobile a{display:block;padding:0.85rem 0;font-size:0.95rem;color:var(--tm);text-decoration:none;border-bottom:1px solid rgba(45,106,79,0.08);letter-spacing:0.03em}
+.nav-mobile .nav-cta{background:var(--gm)!important;color:var(--w)!important;text-align:center;border-radius:50px;margin-top:0.8rem;border-bottom:none!important;padding:0.75rem;font-weight:700}
+@media(max-width:1024px){
+  .hero-text{padding:3rem 3rem}
+  .hero-title{font-size:2.6rem}
+  .day-layout{gap:2rem}
+  .gallery-mosaic{grid-template-columns:repeat(3,1fr)}
+  .g-tall{height:340px}
+  .growth-with-photo,.safety-with-photo{gap:2rem}
+}
+@media(max-width:768px){
+  nav{padding:0 1rem}
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .hero-title{font-size:1.9rem}
+  .hero-text{padding:2rem 1.2rem 2.5rem}
+  .hero-meta-row{gap:0.75rem}
+  .hero-meta-item{font-size:0.8rem}
+  .hero-buttons{flex-direction:column;gap:0.6rem}
+  .btn-primary{justify-content:center;padding:0.8rem 1.5rem;font-size:0.9rem}
+  .hero-seats{display:none}
+  .scroll-indicator{bottom:1rem}
+  .photo-band{grid-template-columns:1fr;height:auto}
+  .photo-band-item{height:200px}
+  section{padding:4rem 0}
+  .section-title{font-size:1.5rem;margin-bottom:2rem}
+  .worries-grid{grid-template-columns:1fr 1fr}
+  .why-grid,.staff-grid,.testimonials-grid,.growth-with-photo,.safety-with-photo{grid-template-columns:1fr}
+  .day-layout{grid-template-columns:1fr}
+  .days-tabs{width:100%}
+  .day-tab{flex:1;text-align:center;padding:0.6rem 0.5rem}
+  .gallery-mosaic{grid-template-columns:repeat(2,1fr)}
+  .g-tall{grid-row:span 1;height:200px!important}
+  .g-wide{grid-column:span 2;height:200px}
+  .overview-table th{width:100px;font-size:0.82rem;padding-right:0.5rem}
+  .overview-table td{font-size:0.82rem}
+  .cta-title{font-size:1.6rem}
+  #cta{padding:5rem 1.5rem}
+  .staff-photo{height:260px;overflow:hidden}
+  .staff-photo img{height:100%;object-fit:cover}
+  .why-card-photo{height:200px;overflow:hidden}
+  .why-card-photo img{height:100%;object-fit:cover}
+}
+@media(max-width:480px){
+  .hero-title{font-size:1.55rem}
+  .hero-badge{font-size:0.65rem}
+  .worries-grid{grid-template-columns:1fr}
+  .gallery-mosaic{grid-template-columns:1fr 1fr}
+  .overview-table{display:block}
+  .overview-table tr{display:block;margin-bottom:1rem}
+  .overview-table th{display:block;width:auto;padding-bottom:0.2rem}
+  .overview-table td{display:block;padding-top:0}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">おさじの宿・堂屋敷<span>夏合宿inにしあわくら 2026</span></a>
+  <ul class="nav-links">
+    <li><a href="#why">特徴</a></li>
+    <li><a href="#days">3日間</a></li>
+    <li><a href="#gallery">ギャラリー</a></li>
+    <li><a href="#overview">概要</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://doyashiki.base.shop/" class="nav-cta">申し込む</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMenu(this)" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="#why" onclick="closeMenu()">特徴</a>
+  <a href="#days" onclick="closeMenu()">3日間</a>
+  <a href="#gallery" onclick="closeMenu()">ギャラリー</a>
+  <a href="#overview" onclick="closeMenu()">概要</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="https://doyashiki.base.shop/" class="nav-cta" onclick="closeMenu()">申し込む</a>
+</div>
+
+<!-- ① ヒーロー写真（全幅） -->
+<section id="hero">
+  <div class="hero-bg">
+    <picture>
+      <source media="(max-width: 768px)" srcset="/summercamp2026/photo/photo01_mb.jpg">
+      <img src="/summercamp2026/photo/photo01_pc.jpg" alt="夏合宿inにしあわくら">
+    </picture>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-text fade-in">
+    <div class="hero-badge">岡山県西粟倉村｜2026 SUMMER CAMP</div>
+    <h1 class="hero-title">自分を<em>見つける</em>3日間が、<br>子どもを少し大きくする。</h1>
+    <div class="hero-meta-row">
+      <div class="hero-meta-item"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>A：8/3〜5　B：8/17〜19　2泊3日</div>
+      <div class="hero-meta-item"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>岡山県西粟倉村</div>
+      <div class="hero-meta-item"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>小学4年〜中学生対象｜各回定員8名</div>
+    </div>
+    <div class="hero-buttons">
+      <a href="https://doyashiki.base.shop/" class="btn-primary">参加申し込み <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+    </div>
+  </div>
+  <div class="hero-seats">
+    <div class="seats-label">各回定員</div>
+    <div class="seats-num">8<span style="font-size:1rem;opacity:0.7;">名</span></div>
+    <div class="seats-sub">少人数制</div>
+  </div>
+  <div class="scroll-indicator">
+    <span>SCROLL</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ②③④ 写真帯（3連） -->
+<div class="photo-band">
+  <div class="photo-band-item">
+    <img src="/summercamp2026/photo/photo02.jpg" alt="">
+  </div>
+  <div class="photo-band-item">
+    <img src="/summercamp2026/photo/photo03.jpg" alt="">
+  </div>
+  <div class="photo-band-item">
+    <img src="/summercamp2026/photo/photo04.jpg" alt="">
+  </div>
+</div>
+
+<!-- curve: cream→white -->
+<div class="curve-sep" style="background:#faf7f2"><svg viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C400,64 800,0 1200,64 L1200,64 L0,64 Z" fill="#ffffff"/></svg></div>
+
+<!-- WORRIES -->
+<section id="worries">
+  <img class="deco-bg" src="/summercamp2026/icons/children_playing.png" alt="" style="width:350px;height:350px;bottom:-40px;right:-40px;opacity:0.07;object-fit:contain;">
+  <div class="container">
+    <h2 class="section-title fade-in"><svg class="title-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11,21 C5,17 3,12 4,7 C5,3 9,2 12,2 C15,2 19,3 20,8 C21,13 18,17 12,21"/><path d="M12,2 C11.5,8 11,14 11,21"/></svg>冒険予定は自分達で考える！</h2>
+    <div class="fade-in" style="max-width:720px">
+      <p style="font-size:1rem;color:var(--tm);line-height:1.9;margin-bottom:1.5rem;">この合宿で大切にしているのは、「自然の中で体験すること」だけではありません。<br>川に入る、火を囲む、仲間とご飯をつくる――そんな一つひとつの体験を通して、<br>子どもたち自身が「どうしたいか」を考え、自分たちで三日間の暮らしをつくっていくことを大切にしています。</p>
+      <div style="background:var(--gp);border-left:3px solid var(--gm);border-radius:0 8px 8px 0;padding:1.2rem 1.5rem;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:0.6rem;">
+        <p style="font-size:0.95rem;color:var(--gd);font-weight:500;">「明日は何をして遊ぼう？」</p>
+        <p style="font-size:0.95rem;color:var(--gd);font-weight:500;">「今日の晩ご飯は何にする？」</p>
+        <p style="font-size:0.95rem;color:var(--gd);font-weight:500;">「縁側で一人でぼーっとしたい」</p>
+      </div>
+      <p style="font-size:1rem;color:var(--tm);line-height:1.9;">大人が決めた予定をこなすのではなく、子どもたち同士で話し合い、ときには悩みながら、自分たちの"やってみたい"を形にしていく。<br>そこには、学校や日常生活だけでは出会えない仲間づくりや生活体験があります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- curve: white→cream -->
+<div class="curve-sep" style="background:#ffffff"><svg viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C400,0 800,64 1200,0 L1200,64 L0,64 Z" fill="#faf7f2"/></svg></div>
+
+<!-- WHY — ⑤⑥⑦⑧ 写真付きカード -->
+<section id="why">
+  <svg class="deco-bg" style="width:280px;height:280px;top:-40px;right:-40px;opacity:0.06" viewBox="0 0 24 24" fill="none" stroke="var(--gm)" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11,21 C5,17 3,12 4,7 C5,3 9,2 12,2 C15,2 19,3 20,8 C21,13 18,17 12,21"/><path d="M12,2 C11.5,8 11,14 11,21"/></svg>
+  <div class="container">
+    <h2 class="section-title fade-in"><img src="/summercamp2026/icons/rice_bowl.png" class="title-icon" width="28" height="28" alt="">夏合宿inにしあわくらの特徴</h2>
+    <div class="why-grid">
+      <div class="why-card fade-in">
+        <div class="why-card-photo">
+          <img src="/summercamp2026/photo/photo05_mb.jpg" alt="自分で決める">
+          <span class="photo-tag">特徴①</span>
+        </div>
+        <div class="why-card-body"><h3>🙋 自分で決める</h3><p>何を食べるか、どこへ行くか、どの役割に手をあげるか。小さな選択の積み重ねが、自分で考える力を育てます。</p></div>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-card-photo">
+          <img src="/summercamp2026/photo/photo06.jpg" alt="少人数制">
+          <span class="photo-tag">特徴②</span>
+        </div>
+        <div class="why-card-body"><h3>👥 定員8名の少人数制</h3><p>少ないからこそ、一人ひとりに目が届く。スタッフが子どもの変化を見逃さず、丁寧に関わります。</p></div>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-card-photo" style="background:#e8f5e9;">
+          <img src="/summercamp2026/icons/salamander.png" alt="オオサンショウウオ" style="width:130px!important;height:130px!important;object-fit:contain!important;">
+          <span class="photo-tag">特徴③</span>
+        </div>
+        <div class="why-card-body"><h3>🦎 オオサンショウウオに会えるかも？</h3><p>堂屋敷の前のきれいな川には国の特別天然記念物のオオサンショウウオが暮らしています。夜にライトをもって出かけると会えるかもしれません。（上からそっと観察します。昨年は見ることができました！）</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- curve: cream→dark green -->
+<div class="curve-sep" style="background:#faf7f2"><svg viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C400,64 800,0 1200,64 L1200,64 L0,64 Z" fill="#166534"/></svg></div>
+
+<!-- DAYS — DAYごとにメイン1枚＋サブ2枚 -->
+<section id="days">
+  <svg class="deco-bg" style="width:340px;height:200px;bottom:-20px;left:-30px;opacity:0.07" viewBox="0 0 32 20" fill="none" stroke="white" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1,18 L9,4 L16,13 L21,7 L31,18"/><path d="M0,14 Q8,10 16,14 Q24,18 32,14"/></svg>
+  <div class="container">
+    <h2 class="section-title fade-in"><svg class="title-icon" width="32" height="22" viewBox="0 0 32 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1,18 L9,4 L16,13 L21,7 L31,18"/></svg>昨年はこんなことしました</h2>
+    <div class="days-tabs fade-in">
+      <button class="day-tab active" onclick="switchDay(1)">DAY 1</button>
+      <button class="day-tab" onclick="switchDay(2)">DAY 2</button>
+      <button class="day-tab" onclick="switchDay(3)">DAY 3</button>
+    </div>
+    <div class="day-content active" id="day-1">
+      <img src="/summercamp2026/photo/day1.png" alt="DAY 1" class="day-img-full">
+    </div>
+    <div class="day-content" id="day-2">
+      <img src="/summercamp2026/photo/day2.png" alt="DAY 2" class="day-img-full">
+    </div>
+    <div class="day-content" id="day-3">
+      <img src="/summercamp2026/photo/day3.png" alt="DAY 3" class="day-img-full">
+    </div>
+  </div>
+</section>
+
+<!-- curve: dark green→white -->
+<div class="curve-sep" style="background:#166534"><svg viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C400,0 800,64 1200,0 L1200,64 L0,64 Z" fill="#ffffff"/></svg></div>
+
+<!-- GALLERY — モザイクグリッド（⑱〜㉕） -->
+<section id="gallery">
+  <div class="gallery-mosaic fade-in">
+    <div class="g-item g-tall">
+      <img src="/summercamp2026/photo/photo18.jpg" alt="川遊び">
+      <div class="g-label">森探検</div>
+    </div>
+    <div class="g-item g-std">
+      <img src="/summercamp2026/photo/photo19.jpg" alt="焚き火">
+      <div class="g-label">夜のカードゲーム</div>
+    </div>
+    <div class="g-item g-std">
+      <img src="/summercamp2026/photo/photo20.jpg" alt="料理">
+      <div class="g-label">料理</div>
+    </div>
+    <div class="g-item g-std">
+      <img src="/summercamp2026/photo/photo21.jpg" alt="流しソーメン台づくり">
+      <div class="g-label">流しソーメン台づくり</div>
+    </div>
+    <div class="g-item g-std">
+      <img src="/summercamp2026/photo/photo22.jpg" alt="星空観察">
+      <div class="g-label">献立会議</div>
+    </div>
+    <div class="g-item g-wide">
+      <img src="/summercamp2026/photo/photo23.jpg" alt="集合写真">
+      <div class="g-label">川登り</div>
+    </div>
+    <div class="g-item g-std">
+      <img src="/summercamp2026/photo/photo24.jpg" alt="笑顔">
+      <div class="g-label">川からの帰り道</div>
+    </div>
+    <div class="g-item g-std">
+      <img src="/summercamp2026/photo/photo25.jpg" alt="羽釜で炊飯">
+      <div class="g-label">羽釜で炊飯</div>
+    </div>
+  </div>
+</section>
+
+<!-- curve: white→cream -->
+<div class="curve-sep" style="background:#ffffff"><svg viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C400,64 800,0 1200,64 L1200,64 L0,64 Z" fill="#faf7f2"/></svg></div>
+
+<!-- PARTICIPANT VOICES -->
+<section id="participant-voices" style="background:var(--cream)">
+  <img class="deco-bg" src="/summercamp2026/icons/sparkles.png" alt="" style="width:340px;height:340px;top:-40px;right:-40px;opacity:0.07;object-fit:contain;">
+  <div class="container">
+    <h2 class="section-title fade-in"><svg class="title-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>参加者の声</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in"><p class="testimonial-text">「楽しかった！羽釜でご飯を炊く作業ができたのがよかった。川登りが楽しかった。もっとやりたかった。」</p><div class="testimonial-author"><div class="testimonial-avatar"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="testimonial-name">参加者</div></div></div></div>
+      <div class="testimonial-card fade-in"><p class="testimonial-text">「全部すごい楽しかった！！次はいつ？早く行きたい！スーちゃん※が本当に可愛かった。ずっといてくれて嬉しかった。献立会議など自分たちで決めるのが楽しかった。みんなでご飯を作ることが良かったので、次は初日いきなりお昼ご飯作りから始めたい。冬もやってほしい。西粟倉の山が、冬はどんな景色になるか見てみたい。雪の百年の森に行ってみたい。」</p><div class="testimonial-author"><div class="testimonial-avatar"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="testimonial-name">参加者</div></div></div></div>
+      <div class="testimonial-card fade-in"><p class="testimonial-text">「1番記憶に残っているのは、シンさんと友達と一緒にかまの火を大雨から守ったことです。とても大変だったけど、雨にうたれて少し気持ちよかったです！みんなと温泉に行ったことも楽しかったです。露天風呂に入ったりしてずっとポカポカしていました。料理作りも楽しかったし、初めてのことがたくさんでした。あとスーちゃん※がとてもかわいかったです！」</p><div class="testimonial-author"><div class="testimonial-avatar"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="testimonial-name">参加者</div></div></div></div>
+    </div>
+    <div style="margin-top:1.5rem;background:var(--cream);border-radius:16px;border:1px solid transparent;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;">
+      <div style="display:flex;align-items:center;justify-content:center;padding:1.5rem;">
+        <img src="/summercamp2026/icons/dog.png" alt="スクールドッグ" style="width:100%;max-width:120px;object-fit:contain;mix-blend-mode:multiply;">
+      </div>
+      <div style="display:flex;align-items:center;padding:1.5rem 1.5rem 1.5rem 0;font-size:0.85rem;color:var(--tm);line-height:1.7;">
+        <span>※「スーちゃん」は一緒に散歩してくれたスクールドッグです。</span>
+      </div>
+    </div>
+    <img src="/summercamp2026/photo/photo37.jpg" alt="スーちゃん" class="sue-photo">
+  </div>
+</section>
+
+<!-- curve: cream→white -->
+<div class="curve-sep" style="background:#faf7f2"><svg viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C400,0 800,64 1200,0 L1200,64 L0,64 Z" fill="#ffffff"/></svg></div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <svg class="deco-bg" style="width:320px;height:120px;top:40px;right:-20px;opacity:0.05" viewBox="0 0 36 18" fill="none" stroke="var(--gm)" stroke-width="0.6" stroke-linecap="round" aria-hidden="true"><path d="M2,9 C7,3 12,15 17,9 C22,3 27,15 32,9"/><path d="M2,14 C7,8 12,20 17,14 C22,8 27,20 32,14"/></svg>
+  <div class="container">
+    <h2 class="section-title fade-in"><svg class="title-icon" width="32" height="18" viewBox="0 0 36 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2,9 C7,3 12,15 17,9 C22,3 27,15 32,9"/></svg>保護者の声</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in"><p class="testimonial-text">「本人のやりたいことを沢山できたように思います。楽しい時間をありがとうございました。」</p><div class="testimonial-author"><div class="testimonial-avatar"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div><div><div class="testimonial-name">保護者</div></div></div></div>
+      <div class="testimonial-card fade-in"><p class="testimonial-text">「田舎に住んでいても普段なかなか自然の中に連れていけないのですごく貴重な体験をさせていただきました。本人はみんなで予算を考えながらメニューを決めたり料理をしたりが嬉しかったようです。ありがとうございました。」</p><div class="testimonial-author"><div class="testimonial-avatar"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div><div><div class="testimonial-name">保護者</div></div></div></div>
+      <div class="testimonial-card fade-in"><p class="testimonial-text">「とても楽しかったみたいで、とてつもなくいい顔で帰ってきました。大変お世話になりました。子どもたちがキャンプのすべてにおいて、主体的にやることを決められたことが、より深く自分ごととして体験できたように思います。それは「自分で決めてね」と言うだけでは難しく、運営側がうまく寄り添って、ほどよく手助けくださったからだと思います。」</p><div class="testimonial-author"><div class="testimonial-avatar"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div><div><div class="testimonial-name">保護者</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- curve: white→cream -->
+<div class="curve-sep" style="background:#ffffff"><svg viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C400,0 800,64 1200,0 L1200,64 L0,64 Z" fill="#faf7f2"/></svg></div>
+
+<!-- STAFF -->
+<section id="staff">
+  <img class="deco-bg" src="/summercamp2026/icons/farmhouse.png" alt="" style="width:350px;height:350px;bottom:-40px;left:-40px;opacity:0.07;object-fit:contain;">
+  <div class="container">
+    <h2 class="section-title fade-in"><svg class="title-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11,21 C5,17 3,12 4,7 C5,3 9,2 12,2 C15,2 19,3 20,8 C21,13 18,17 12,21"/><path d="M12,2 C11.5,8 11,14 11,21"/></svg>スタッフ紹介</h2>
+    <div class="staff-grid">
+      <div class="staff-card fade-in">
+        <div class="staff-photo">
+          <img src="https://baseec-img-mng.akamaized.net/images/shop_front/doyashiki-base-shop/1e8d5356f09cb30e5346b5ec534d6d5c.jpg" alt="青木 潤一">
+        </div>
+        <div class="staff-body">
+          <div class="staff-name">青木 潤一</div>
+          <div class="staff-role">一般社団法人 日本スクールドッグ協会 代表理事、2児（小５男、中２男）の父</div>
+          <div style="font-size:0.85rem;color:var(--tm);line-height:1.8;display:flex;flex-direction:column;gap:1rem;margin-top:0.8rem;">
+            <p>一般社団法人日本スクールドッグ協会は、スクールドッグ（訓練された犬たち）とともに学校現場や教育施設を訪問し、子どもたちへの安心・安全空間を提供しています。同時に犬へのお世話を通して、子どもたちの自主性や思いやり、チャレンジといった「非認知スキル」を育むための動物介在教育を教育現場に導入することを推奨し、支援しています。</p>
+            <p>代表理事の青木 潤一は15年間学校現場で教諭として勤務。2017年に当時勤めていた同志社中学校（京都）においてスクールドッグを導入。多くの生徒にとっての居場所作りに貢献。2021年に退職し、移住した岡山県西粟倉村でSocialAnimalBondを起業。2022年に一般社団法人日本スクールドッグ協会を創設し、代表理事に就任。その年に2022年度「キッズデザイン賞※１」を受賞。また、メディアでもスクールドッグ活動が度々取り上げられる。</p>
+            <p style="font-size:0.8rem;color:var(--tl);">※１：「子どもたちが安全に暮らす」「子どもたちが感性や創造性豊かに育つ」「子どもを産み育てやすい社会をつくる」という目的を満たす、製品・サービス・空間・活動・研究の中から優れた作品に授与される。</p>
+            <p><strong>【主なメディア掲載】</strong><br>NHK・BS朝日・RSK（山陽放送）・OHK（岡山放送）・BSS（山陰放送）　朝日新聞・読売新聞・山陽新聞・日本海新聞　雑誌「ソトコト」・雑誌「BIOCITY」など　その他多数</p>
+          </div>
+        </div>
+      </div>
+      <div class="staff-card fade-in">
+        <div class="staff-photo">
+          <img src="https://baseec-img-mng.akamaized.net/images/shop_front/doyashiki-base-shop/e9fb234efc898010ce706dfffd654192.jpg" alt="桝岡 真">
+        </div>
+        <div class="staff-body">
+          <div class="staff-name">桝岡 真</div>
+          <div class="staff-role">おさじの宿・堂屋敷 宿主、２児（中１女、高２女）の父</div>
+<div style="font-size:0.85rem;color:var(--tm);line-height:1.8;display:flex;flex-direction:column;gap:1rem;">
+            <p>はじめまして、「おさじの宿 堂屋敷」の宿主です。私は7年前に東京からこの西粟倉村に移住しました。理由は自然豊かな場所で子育てをしたい、というものでした。幸い期待した通りに二人の娘は自然を楽しみながら元気に成長してくれました。</p>
+            <p>「堂屋敷」は古民家の宿として、主に海外や都市部からのお客様に滞在いただいてます。これとは別に夏休みに、もし私が都市部にいたら、子どもに体験させたいだろうなあ、というような内容を、教員としての経験も豊富な日本スクールドッグ協会の青木さんと子供だけのサマーキャンプとして企画し、昨年実施しました。参加した子供たちも私達も楽しい時間を過ごせました。本イベントは野外にテントを張って宿泊ではないので、サマーキャンプ改め、今年は「夏合宿」と改名して開催したいと考えております。</p>
+            <p>本合宿は、小中学生を対象とした2泊3日の「体験付宿泊プラン」です。豊かな自然に囲まれた西粟倉で、子どもたちは「どんな遊びをするか」「どう1日を過ごすか」などを、自分たちで話し合って決めながら過ごします。</p>
+            <p>初めて会った友達とそんな相談ができるように、まず到着後には互いを知るためのチームビルディングを行ってコミュニケーションのサポートをします。夜はテント泊ではなく、古民家で畳の部屋に布団を並べて眠ります。</p>
+            <p>山の中の古民家を起点に体験活動を行いますので、多少のケガはあるかもしれません。小さい失敗を通して種々の活動がうまくなっていくと考えております。道具を使う際の安全指導、軍手などの装具の準備、絶対やってはいけないことの指導はしっかり行いますが、小さな失敗（ケガ）はあり得ることをご承知おきください。そういったトラブルが起きたときにどう行動するかも、また学びになります。親が見ていないところでは意外と強いところを見せてくれます。</p>
+            <p>子供たちが楽しく、ちょっと頭や共感を使う3日間を過ごすきっかけになれば幸いです。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- curve: cream→white -->
+<div class="curve-sep" style="background:#faf7f2"><svg viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C400,0 800,64 1200,0 L1200,64 L0,64 Z" fill="#ffffff"/></svg></div>
+
+<!-- STAFF MESSAGE -->
+<section id="staff-message" style="background:var(--w)">
+  <div class="container" style="max-width:720px">
+    <h2 class="section-title fade-in"><img class="title-icon" src="/summercamp2026/icons/farmhouse.png" width="32" height="32" alt="" style="mix-blend-mode:multiply;filter:hue-rotate(61deg) saturate(2) brightness(1.5);">スタッフから保護者の皆様へ</h2>
+    <div class="fade-in" style="display:flex;flex-direction:column;gap:1.5rem;font-size:0.95rem;color:var(--tm);line-height:1.9;">
+      <p>近年の教育では、「知識をどれだけ覚えているか」だけではなく、「自ら考え、他者と協働しながら答えのない課題に向き合う力」が重視されるようになっています。変化の激しい社会の中では、正解を探す力だけではなく、自分なりに問いを立て、試行錯誤しながら挑戦していく姿勢が求められています。</p>
+      <p>その一方で、子どもたちを取り巻く環境は便利さを増し、自然の中で身体を動かしたり、異年齢の仲間と生活を共にしたりする機会は少なくなっています。また、失敗や葛藤を経験する場面も減少していると言われています。しかし、本来子どもたちは、挑戦と失敗を繰り返しながら、自分自身で考え、成長していく力を持っています。</p>
+      <p>この合宿イベントでは、西粟倉の豊かな自然の中での体験を通して、子どもたちの「非認知能力」を育むことを大切にしています。川の冷たさ、土の感触、木々の香り、仲間と囲む食事や語り合う時間――そうした五感を使った体験は、感受性や想像力を育てるだけでなく、自分と向き合い、他者と関わる力にもつながっていきます。</p>
+      <p>また、三日間の共同生活では、「明日は何をしようか」「晩ご飯はどうするか」などを子どもたち自身で考え、話し合いながら生活をつくっていきます。時には思い通りにいかないことや、小さな失敗もあるかもしれません。しかし、その経験こそが、困難を乗り越えるしなやかな強さや、仲間と協力する力を育てる大切な学びになると考えています。</p>
+      <p>この夏、お子様が自然豊かな西粟倉の地で、多くの出会いと挑戦を通して、自分らしく成長していくことを心より願っております。</p>
+    </div>
+  </div>
+</section>
+
+<!-- curve: white→dark green -->
+<div class="curve-sep" style="background:#ffffff"><svg viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C400,64 800,0 1200,64 L1200,64 L0,64 Z" fill="#166534"/></svg></div>
+
+<!-- SAFETY — 写真付き -->
+<section id="safety">
+  <img class="deco-bg" src="/summercamp2026/icons/campfire.png" alt="" style="width:340px;height:340px;top:-40px;right:-40px;opacity:0.07;object-fit:contain;">
+  <div class="container">
+    <div class="safety-with-photo">
+      <div class="safety-photo">
+        <img src="/summercamp2026/photo/photo35.jpg" alt="安全な環境">
+      </div>
+      <div>
+        <h2 class="section-title fade-in" style="color:var(--w);"><svg class="title-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12,21 L12,10"/><path d="M12,16 C10,14 7,11 5,8 C8,7 11,9 12,13"/><path d="M12,13 C14,11 17,8 19,6 C16,5 13,7 12,10"/></svg>安心して送り出せる理由</h2>
+        <div class="safety-list">
+          <div class="safety-item fade-in"><div class="safety-check"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div><div class="safety-label">少人数制（各回定員8名）</div><div class="safety-desc">少人数だからこそ、一人ひとりの様子をスタッフがしっかりと見守ります。</div></div></div>
+          <div class="safety-item fade-in"><div class="safety-check"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div><div class="safety-label">傷害保険への加入を推奨</div><div class="safety-desc">万が一のケガ・病気に備え、傷害保険への加入をお願いしています。昨年は病院に行くほどのケガ・急病はゼロでした。</div></div></div>
+          <div class="safety-item fade-in"><div class="safety-check"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div><div class="safety-label">緊急時は速やかに保護者へ連絡</div><div class="safety-desc">体調不良やケガが生じた場合は即座に保護者へご連絡し、必要に応じてお迎えをお願いする場合があります。</div></div></div>
+          <div class="safety-item fade-in"><div class="safety-check"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div><div class="safety-label">安全指導の徹底</div><div class="safety-desc">道具使用時の指導・軍手などの装具準備・禁止事項の説明を行い、安全に楽しめる環境を整えます。</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- curve: dark green→white -->
+<div class="curve-sep" style="background:#166534"><svg viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C400,0 800,64 1200,0 L1200,64 L0,64 Z" fill="#ffffff"/></svg></div>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <img class="deco-bg" src="/summercamp2026/icons/rice_bowl.png" alt="" style="width:340px;height:340px;bottom:-40px;right:-40px;opacity:0.07;object-fit:contain;">
+  <div class="container">
+    <h2 class="section-title fade-in"><svg class="title-icon" width="32" height="22" viewBox="0 0 32 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1,18 L9,4 L16,13 L21,7 L31,18"/></svg>開催概要</h2>
+    <div class="fade-in" style="background:var(--cream);border-radius:16px;padding:2.5rem;border:1px solid rgba(45,106,79,0.12);">
+      <table class="overview-table">
+        <tr><th>日程</th><td><strong>A日程</strong>：2026年8月3日（月）〜 8月5日（水）2泊3日<br><strong>B日程</strong>：2026年8月17日（月）〜 8月19日（水）2泊3日</td></tr>
+        <tr><th>集合・解散</th><td>現地集合・現地解散<br>おさじの宿・堂屋敷（岡山県英田郡西粟倉村影石1099）</td></tr>
+        <tr><th>アクセス</th><td>【お車の場合】<br>鳥取自動車道「西粟倉IC」より約3分。<br>岡山市・姫路市から2時間以内、倉敷市・鳥取市からもアクセスしやすい立地です。<br><br>【電車の場合】<br>智頭急行「あわくら温泉駅」が最寄り駅です。<br>駅から会場まで徒歩10分です。到着電車にあわせてお迎え可能です。<br><br>豊かな自然に囲まれた環境でありながら、岡山県南部や播磨エリアから無理なく参加できる場所にあります。</td></tr>
+        <tr><th>対象</th><td>小学4年生〜中学生</td></tr>
+        <tr><th>定員</th><td>各回8名　※最少催行人数5名</td></tr>
+        <tr><th>参加費</th><td>1名参加：<strong>¥49,800</strong>（税込）<br>2名以上での参加：<strong>¥39,800</strong>/人（税込）<br>昨年参加者：<strong>¥39,800</strong>（税込）<br><small style="color:var(--tl);">宿泊費・6食・体験活動費すべて含む。現地集合後は現金不要。</small></td></tr>
+        <tr><th>持ち物</th><td>3日分の着替え（川での活動用の予備あると◎）・長靴・帽子・タオル・常備薬・保険証<br><small style="color:var(--tl);">※ゲーム機持ち込み禁止。スマートフォン・携帯は使用時間制限あり</small></td></tr>
+        <tr><th>食事</th><td>6食分含む（アレルギー等はご相談ください）</td></tr>
+        <tr><th>申し込み</th><td>当サイトの決済画面より申し込み後、個別ヒアリングシートをお送りします<br><small style="color:var(--tl);">受付開始：5月15日予定（定員到達次第終了）</small></td></tr>
+        <tr><th>主催</th><td>おさじの宿・堂屋敷<br>監修：一般社団法人 日本スクールドッグ協会</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- curve: white→cream -->
+<div class="curve-sep" style="background:#ffffff"><svg viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C400,64 800,0 1200,64 L1200,64 L0,64 Z" fill="#faf7f2"/></svg></div>
+
+<!-- FAQ -->
+<section id="faq">
+  <img class="deco-bg" src="/summercamp2026/icons/deer.png" alt="" style="width:350px;height:350px;bottom:-40px;left:-40px;opacity:0.07;object-fit:contain;">
+  <div class="container" style="max-width:720px">
+    <h2 class="section-title fade-in"><svg class="title-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11,21 C5,17 3,12 4,7 C5,3 9,2 12,2 C15,2 19,3 20,8 C21,13 18,17 12,21"/><path d="M12,2 C11.5,8 11,14 11,21"/></svg>よくある質問</h2>
+    <div class="faq-list fade-in">
+      <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">参加費に含まれるものを教えてください<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div><div class="faq-answer">宿泊費・6食分の食費・体験活動費がすべて含まれます。現地集合後は追加の現金は不要です。</div></div>
+      <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">人見知りでも参加できますか？<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div><div class="faq-answer">各回8名という少人数制なので、人見知りのお子さんでも馴染みやすい環境です。到着後はチームビルディングを行い、スタッフが自然と輪に入れるようサポートします。</div></div>
+      <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">ケガや病気の場合はどうなりますか？<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div><div class="faq-answer">転倒やトゲが刺さるなどの小さなケガは自然体験の一部と考えています。道具使用時の安全指導・装具準備・禁止事項説明を徹底します。緊急時は速やかに保護者へ連絡し、必要に応じてお迎えをお願いする場合があります。昨年は病院に行くほどのケガ・急病はありませんでした。傷害保険への加入を推奨しています。</div></div>
+      <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">子どもの様子を知ることはできますか？<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div><div class="faq-answer">毎日ブログにて活動内容を報告します。不安なことは申し込み後のオンラインガイダンスでもご相談いただけます。</div></div>
+      <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">スマートフォンやゲーム機は持ち込めますか？<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div><div class="faq-answer">ゲーム機の持ち込みは禁止です。スマートフォン・携帯電話は使用時間の制限を設けて管理します。</div></div>
+      <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">最少催行人数はありますか？<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div><div class="faq-answer">各回5名が最少催行人数です。達しない場合は全額返金いたします。</div></div>
+      <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">キャンセルポリシーを教えてください<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div><div class="faq-answer">開始14日前まで：参加費の20%　／　開始3日前まで：50%　／　開始日以降・途中帰宅：100% のキャンセル料が発生します。返金時は決済システム利用料（6.6%）を差し引きます。2名以上割引適用時に1名キャンセルの場合、残りの参加者の参加費は49,800円に再計算されます。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- curve: cream→medium green -->
+<div class="curve-sep" style="background:#faf7f2"><svg viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C400,0 800,64 1200,0 L1200,64 L0,64 Z" fill="#16a34a"/></svg></div>
+
+<!-- CTA — 背景写真 -->
+<section id="cta">
+  <div class="cta-bg-photo">
+    <img src="/summercamp2026/photo/photo36.jpg" alt="">
+  </div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <h2 class="cta-title">この夏、子どもが<br>自分を見つける3日間へ。</h2>
+    <p class="cta-sub">古民家と犬と川と森と星と。岡山県西粟倉村で、忘れられない夏を。</p>
+    <div class="cta-seats">A：8/3〜5　｜　B：8/17〜19　各回8名</div><br>
+    <a href="https://doyashiki.base.shop/" class="cta-btn">参加申し込みはこちら <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+  </div>
+</section>
+
+<footer>
+  <p>おさじの宿・堂屋敷｜岡山県英田郡西粟倉村</p>
+  <p style="margin-top:0.5rem;">© 2026 夏合宿inにしあわくら. All rights reserved.</p>
+</footer>
+
+<script is:inline>
+function switchDay(day){document.querySelectorAll('.day-tab').forEach((t,i)=>t.classList.toggle('active',i+1===day));document.querySelectorAll('.day-content').forEach((c,i)=>c.classList.toggle('active',i+1===day));}
+function toggleFAQ(el){el.parentElement.classList.toggle('open');}
+function toggleMenu(btn){btn.classList.toggle('open');document.getElementById('nav-mobile').classList.toggle('open');btn.setAttribute('aria-label',btn.classList.contains('open')?'メニューを閉じる':'メニューを開く');}
+function closeMenu(){document.querySelector('.nav-hamburger').classList.remove('open');document.getElementById('nav-mobile').classList.remove('open');}
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
