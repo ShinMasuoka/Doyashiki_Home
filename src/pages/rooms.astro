@@ -1,0 +1,339 @@
+---
+import { getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import PageShell from '../components/PageShell.astro';
+import PageTitle from '../components/PageTitle.astro';
+import ReservationCTA from '../components/ReservationCTA.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+
+import iroriImg from '../assets/images/experiences/fire.jpg';
+import engawaImg from '../assets/images/experiences/suika.jpg';
+
+// 実写真が揃ったものだけここに追加していく（和室・庭は写真待ち）
+const spaceImages: Record<string, ImageMetadata | undefined> = {
+  irori: iroriImg,
+  engawa: engawaImg,
+};
+
+const data = (await getEntry('rooms', 'ja'))!.data;
+---
+
+<PageShell
+  title={data.seo.title}
+  description={data.seo.description}
+  canonicalPath="/rooms/"
+>
+  <PageTitle label={data.label} heading={data.heading} lead={data.lead} />
+
+  <!-- ===== 布団スタイルの明記 ===== -->
+  <section class="rooms">
+    <div class="notice">
+      <span class="notice-icon" aria-hidden="true">※</span>
+      <span>
+        <strong class="notice-title">{data.notice.title}</strong>
+        {data.notice.body}
+      </span>
+    </div>
+
+    <!-- ===== 各スペース ===== -->
+    {data.spaces.map((space, i) => (
+      <article class:list={['space-article', i < data.spaces.length - 1 && 'space-article--border']}>
+        {spaceImages[space.id] ? (
+          <Image
+            src={spaceImages[space.id]!}
+            alt={space.title}
+            width={960}
+            class="space-img real-img"
+          />
+        ) : (
+          <ImagePlaceholder label={`写真：${space.title}`} class="space-img" />
+        )}
+        <div class="space-text">
+          <h2 class="space-title">{space.title}</h2>
+          <p class="space-body">{space.body}</p>
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <!-- ===== 眠りの質 ===== -->
+  <section class="sleep">
+    <p class="sleep-label">{data.sleep.label}</p>
+    <h2 class="sleep-title">{data.sleep.title}</h2>
+    <p class="sleep-body">{data.sleep.body}</p>
+    <div class="sleep-quotes">
+      {data.sleep.quotes.map((quote) => (
+        <blockquote class="sleep-quote">
+          {quote}
+          <span class="sleep-quote-from">{data.sleep.quoteFrom}</span>
+        </blockquote>
+      ))}
+    </div>
+  </section>
+
+  <!-- ===== 定員・間取り ===== -->
+  <section class="specs">
+    <h2 class="specs-heading">{data.specs.heading}</h2>
+    <dl class="specs-table">
+      {data.specs.rows.map((row) => (
+        <div class="specs-row">
+          <dt>{row.th}</dt>
+          <dd>{row.td}</dd>
+        </div>
+      ))}
+    </dl>
+    <ImagePlaceholder label={data.specs.floorplanNote} aspectRatio="4/3" class="floorplan" />
+  </section>
+
+  <ReservationCTA heading={data.cta.heading} sub={data.cta.sub} />
+</PageShell>
+
+<style>
+  /* ===== 布団の注意書き ===== */
+  .rooms {
+    background: var(--color-panel);
+    padding: 8px var(--px-section) 8px;
+  }
+
+  .notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: #FFF8E8;
+    border: 1px solid #E8C86A;
+    border-radius: var(--radius-card);
+    padding: 12px 14px;
+    margin: 16px 0 8px;
+    font-size: 13px;
+    line-height: 1.75;
+    color: #5A4A1A;
+  }
+
+  .notice-icon {
+    flex-shrink: 0;
+    font-size: 14px;
+    margin-top: 1px;
+  }
+
+  .notice-title {
+    display: block;
+    font-weight: 600;
+  }
+
+  /* ===== 各スペース ===== */
+  .space-article {
+    padding: 24px 0;
+  }
+
+  .space-article--border {
+    border-bottom: 0.5px solid var(--color-border);
+  }
+
+  /* ImagePlaceholder にはスコープ属性が付かないため :global で拾う */
+  .space-article > :global(.space-img) {
+    margin-bottom: 16px;
+  }
+
+  .real-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-image);
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
+  }
+
+  .space-title {
+    margin: 0 0 8px;
+    font-family: var(--font-mincho);
+    font-weight: 600;
+    font-size: var(--text-h3);
+    letter-spacing: var(--tracking-heading-sm);
+  }
+
+  .space-body {
+    margin: 0;
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-exp);
+    color: var(--color-text-sub);
+  }
+
+  /* ===== 眠りの質 ===== */
+  .sleep {
+    background: var(--color-panel-reservation);
+    padding: var(--py-section) var(--px-section-lg);
+  }
+
+  .sleep-label {
+    margin: 0 0 5px;
+    text-align: center;
+    font-size: var(--text-label);
+    letter-spacing: var(--tracking-label);
+    color: var(--color-leaf);
+    font-weight: 600;
+  }
+
+  .sleep-title {
+    margin: 0 0 14px;
+    text-align: center;
+    font-family: var(--font-mincho);
+    font-weight: 500;
+    font-size: var(--text-h2);
+    letter-spacing: var(--tracking-heading-sm);
+    color: var(--color-leaf-deeper);
+    line-height: 1.6;
+  }
+
+  .sleep-body {
+    margin: 0 0 20px;
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-body);
+    color: var(--color-leaf-deeper);
+  }
+
+  .sleep-quotes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sleep-quote {
+    margin: 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--color-leaf);
+    font-family: var(--font-mincho);
+    font-size: var(--text-quote);
+    line-height: var(--leading-quote);
+    color: var(--color-leaf-dark);
+  }
+
+  .sleep-quote-from {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--font-gothic);
+    font-size: var(--text-meta);
+    color: var(--color-leaf-pale);
+  }
+
+  /* ===== 定員・間取り ===== */
+  .specs {
+    background: var(--color-bg);
+    padding: var(--py-section) var(--px-section-lg) 44px;
+  }
+
+  .specs-heading {
+    margin: 0 0 18px;
+    text-align: center;
+    font-family: var(--font-mincho);
+    font-weight: 500;
+    font-size: var(--text-h2);
+    letter-spacing: var(--tracking-heading);
+  }
+
+  .specs-table {
+    margin: 0 0 22px;
+    background: var(--color-panel);
+    border: 0.5px solid var(--color-border-strong);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+
+  .specs-row {
+    display: flex;
+    gap: 14px;
+    padding: 14px 16px;
+    font-size: var(--text-body-xs);
+    line-height: 1.8;
+  }
+
+  .specs-row + .specs-row {
+    border-top: 0.5px solid var(--color-border);
+  }
+
+  .specs-row dt {
+    flex-shrink: 0;
+    min-width: 3.6em;
+    color: var(--color-accent);
+    font-family: var(--font-mincho);
+  }
+
+  .specs-row dd {
+    margin: 0;
+    color: var(--color-text-sub);
+  }
+
+  /* ===== PC（768px以上）===== */
+  @media (min-width: 768px) {
+    .rooms {
+      padding: 8px var(--px-section-pc) 24px;
+    }
+
+    .notice {
+      max-width: var(--max-width-access);
+      margin: 24px auto 16px;
+    }
+
+    /* 写真と文章の左右交互 */
+    .space-article {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      max-width: var(--max-width-exp);
+      margin: 0 auto;
+      padding: 48px 0;
+    }
+
+    .space-article:nth-of-type(even) {
+      flex-direction: row-reverse;
+    }
+
+    .space-article > :global(.space-img) {
+      flex: 1 1 0;
+      min-width: 0;
+      margin-bottom: 0;
+    }
+
+    .space-text {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    .space-title {
+      font-size: var(--text-h3-pc);
+      margin-bottom: 12px;
+    }
+
+    .space-body {
+      font-size: var(--text-body);
+    }
+
+    .sleep {
+      padding: 64px var(--px-section-pc);
+    }
+
+    .sleep-body,
+    .sleep-quotes {
+      max-width: var(--max-width-text);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .sleep-body {
+      margin-bottom: 24px;
+    }
+
+    .specs {
+      padding: 64px var(--px-section-pc) 72px;
+    }
+
+    .specs-table {
+      max-width: var(--max-width-access);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .specs :global(.floorplan) {
+      max-width: var(--max-width-text);
+      margin: 0 auto;
+    }
+  }
+</style>

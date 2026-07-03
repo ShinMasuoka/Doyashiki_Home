@@ -1,0 +1,167 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import PageShell from '../../components/PageShell.astro';
+import ReservationCTA from '../../components/ReservationCTA.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('news');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'news'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const page = (await getEntry('news-page', 'ja'))!.data;
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<PageShell
+  title={`${post.data.title}｜おさじの宿・堂屋敷`}
+  description={post.data.description ?? page.seo.description}
+  canonicalPath={`/news/${post.slug}/`}
+>
+  <article class="news-article">
+    <header class="news-header">
+      <p class="news-label">{page.label}</p>
+      <time datetime={post.data.date.toISOString().slice(0, 10)} class="news-date">
+        {formatDate(post.data.date)}
+      </time>
+      <h1 class="news-title">{post.data.title}</h1>
+    </header>
+
+    {post.data.cover && (
+      <Image
+        src={post.data.cover}
+        alt={post.data.coverAlt ?? post.data.title}
+        width={960}
+        class="news-cover"
+      />
+    )}
+
+    <div class="news-body">
+      <Content />
+    </div>
+
+    <a href="/news/" class="news-back">{page.backLabel}</a>
+  </article>
+
+  <ReservationCTA heading={page.cta.heading} sub={page.cta.sub} />
+</PageShell>
+
+<style>
+  .news-article {
+    background: var(--color-panel);
+    padding: 8px var(--px-section-lg) 48px;
+  }
+
+  .news-header {
+    text-align: center;
+    padding: 32px 0 8px;
+  }
+
+  .news-label {
+    margin: 0 0 10px;
+    font-size: var(--text-label);
+    letter-spacing: var(--tracking-label);
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .news-date {
+    display: block;
+    font-size: var(--text-meta);
+    color: var(--color-text-muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .news-title {
+    margin: 0 0 18px;
+    font-family: var(--font-mincho);
+    font-weight: 500;
+    font-size: var(--text-h2);
+    letter-spacing: var(--tracking-heading-sm);
+    line-height: 1.6;
+  }
+
+  .news-cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-image);
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
+    margin-bottom: 20px;
+  }
+
+  .news-body {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--color-text-sub);
+  }
+
+  .news-body :global(p) {
+    margin: 0 0 16px;
+  }
+
+  .news-body :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .news-back {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--color-text-weak);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
+
+  .news-back:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== PC（768px以上）===== */
+  @media (min-width: 768px) {
+    .news-article {
+      padding: 16px var(--px-section-pc) 72px;
+    }
+
+    .news-header {
+      padding-top: 48px;
+    }
+
+    .news-title {
+      font-size: var(--text-h2-pc);
+    }
+
+    .news-cover,
+    .news-body,
+    .news-back {
+      max-width: var(--max-width-text);
+    }
+
+    .news-cover,
+    .news-body {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .news-back {
+      display: block;
+      margin: 32px auto 0;
+    }
+  }
+</style>

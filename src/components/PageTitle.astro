@@ -1,0 +1,63 @@
+---
+/** 下層ページのタイトルブロック（英字ラベル＋見出し＋リード文） */
+interface Props {
+  label: string;
+  heading: string;
+  lead?: string;
+}
+
+const { label, heading, lead } = Astro.props;
+---
+
+<div class="page-title">
+  <p class="page-title-label">{label}</p>
+  <h1 class="page-title-heading">{heading}</h1>
+  {lead && <p class="page-title-lead">{lead}</p>}
+</div>
+
+<style>
+  .page-title {
+    padding: 40px var(--px-section-lg) 36px;
+    text-align: center;
+  }
+
+  .page-title-label {
+    margin: 0 0 6px;
+    font-size: var(--text-label);
+    letter-spacing: var(--tracking-label);
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .page-title-heading {
+    margin: 0;
+    font-family: var(--font-mincho);
+    font-weight: 500;
+    font-size: var(--text-h2-lg);
+    letter-spacing: var(--tracking-heading);
+  }
+
+  .page-title-lead {
+    margin: 18px auto 0;
+    max-width: var(--max-width-faq);
+    text-align: left;
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-body);
+    color: var(--color-text-sub);
+  }
+
+  @media (min-width: 768px) {
+    .page-title {
+      padding: 64px var(--px-section-pc) 48px;
+    }
+
+    .page-title-heading {
+      font-size: var(--text-h2-pc);
+    }
+
+    .page-title-lead {
+      max-width: var(--max-width-text);
+      font-size: var(--text-body);
+    }
+  }
+</style>

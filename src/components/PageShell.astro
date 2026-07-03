@@ -1,0 +1,61 @@
+---
+/**
+ * 下層ページ共通の枠。
+ * Header・Footer・MenuOverlay と page-wrap（480px→PC全幅）をまとめて提供する。
+ * メニュー・フッターのテキストは home コレクションを共用する。
+ */
+import { getEntry } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import MenuOverlay from './MenuOverlay.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  locale?: 'ja' | 'en';
+}
+
+const { title, description, canonicalPath, locale = 'ja' } = Astro.props;
+const home = (await getEntry('home', locale))!.data;
+const siteName = 'おさじの宿・堂屋敷';
+
+// トップページ用のアンカー（#experiences 等）は、下層ページではトップへのリンクに変換する
+const menuItems = home.menu.items.map((item) => ({
+  ...item,
+  href: item.href.startsWith('#') ? `/${item.href}` : item.href,
+}));
+---
+
+<Layout title={title} description={description} locale={locale} canonicalPath={canonicalPath}>
+  <div class="page-wrap">
+    <Header locale={locale} siteName={siteName} homeHref="/" />
+    <main>
+      <slot />
+    </main>
+    <Footer siteName={siteName} location={home.footer.location} locale={locale} />
+  </div>
+  <MenuOverlay title={home.menu.title} items={menuItems} ctaLabel={home.menu.ctaLabel} />
+</Layout>
+
+<style>
+  .page-wrap {
+    background: var(--color-bg);
+    color: var(--color-text);
+    min-height: 100vh;
+    max-width: var(--max-width-page);
+    margin: 0 auto;
+    position: relative;
+    overflow-x: hidden;
+    font-family: var(--font-gothic);
+    box-shadow: var(--shadow-page);
+  }
+
+  @media (min-width: 768px) {
+    .page-wrap {
+      max-width: none;
+      box-shadow: none;
+    }
+  }
+</style>

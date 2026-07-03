@@ -1,0 +1,131 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import PageShell from '../../components/PageShell.astro';
+import PageTitle from '../../components/PageTitle.astro';
+import ReservationCTA from '../../components/ReservationCTA.astro';
+import ImagePlaceholder from '../../components/ImagePlaceholder.astro';
+
+const page = (await getEntry('news-page', 'ja'))!.data;
+const posts = (await getCollection('news')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<PageShell
+  title={page.seo.title}
+  description={page.seo.description}
+  canonicalPath="/news/"
+>
+  <PageTitle label={page.label} heading={page.heading} lead={page.lead} />
+
+  <section class="news-list">
+    <div class="news-grid">
+      {posts.map((post) => (
+        <a href={`/news/${post.slug}/`} class="news-card">
+          {post.data.cover ? (
+            <Image
+              src={post.data.cover}
+              alt={post.data.coverAlt ?? post.data.title}
+              width={720}
+              class="news-cover"
+            />
+          ) : (
+            <ImagePlaceholder label={`写真：${post.data.title}`} class="news-cover-ph" />
+          )}
+          <time datetime={post.data.date.toISOString().slice(0, 10)} class="news-date">
+            {formatDate(post.data.date)}
+          </time>
+          <h2 class="news-title">{post.data.title}</h2>
+          {post.data.description && <p class="news-desc">{post.data.description}</p>}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <ReservationCTA heading={page.cta.heading} sub={page.cta.sub} />
+</PageShell>
+
+<style>
+  .news-list {
+    background: var(--color-panel);
+    padding: 20px var(--px-section-lg) 44px;
+  }
+
+  .news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .news-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .news-cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-image);
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
+    margin-bottom: 12px;
+  }
+
+  .news-card :global(.news-cover-ph) {
+    margin-bottom: 12px;
+  }
+
+  .news-date {
+    display: block;
+    font-size: var(--text-meta);
+    color: var(--color-text-muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 5px;
+  }
+
+  .news-title {
+    margin: 0 0 6px;
+    font-family: var(--font-mincho);
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: var(--tracking-heading-sm);
+    line-height: 1.6;
+  }
+
+  .news-card:hover .news-title {
+    color: var(--color-accent);
+  }
+
+  .news-desc {
+    margin: 0;
+    font-size: var(--text-body-xs);
+    line-height: var(--leading-exp);
+    color: var(--color-text-sub);
+  }
+
+  /* ===== PC（768px以上）===== */
+  @media (min-width: 768px) {
+    .news-list {
+      padding: 24px var(--px-section-pc) 72px;
+    }
+
+    .news-grid {
+      max-width: var(--max-width-exp);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .news-title {
+      font-size: 19px;
+    }
+  }
+</style>

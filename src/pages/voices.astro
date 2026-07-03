@@ -1,0 +1,140 @@
+---
+import { getEntry } from 'astro:content';
+import PageShell from '../components/PageShell.astro';
+import PageTitle from '../components/PageTitle.astro';
+import ReservationCTA from '../components/ReservationCTA.astro';
+import { BOOKING_URLS } from '../config/booking';
+
+const data = (await getEntry('voices', 'ja'))!.data;
+---
+
+<PageShell
+  title={data.seo.title}
+  description={data.seo.description}
+  canonicalPath="/voices/"
+>
+  <PageTitle label={data.label} heading={data.heading} lead={data.lead} />
+
+  <section class="voices">
+    <div class="voice-list">
+      {data.voices.map((voice) => (
+        <figure class="voice">
+          <blockquote class="voice-quote">{voice.quote}</blockquote>
+          <figcaption class="voice-meta">{voice.meta}</figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <div class="voices-more">
+      <p class="voices-more-note">{data.airbnb.note}</p>
+      <a
+        href={BOOKING_URLS.airbnb}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="voices-more-link"
+      >
+        {data.airbnb.linkLabel}
+      </a>
+      <p class="voices-disclaimer">{data.disclaimer}</p>
+    </div>
+  </section>
+
+  <ReservationCTA heading={data.cta.heading} sub={data.cta.sub} />
+</PageShell>
+
+<style>
+  .voices {
+    background: var(--color-panel);
+    padding: 12px var(--px-section-lg) 44px;
+  }
+
+  .voice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .voice {
+    margin: 0;
+    background: var(--color-bg);
+    border-radius: var(--radius-card);
+    padding: 18px 18px 15px;
+  }
+
+  .voice-quote {
+    margin: 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--color-leaf);
+    font-family: var(--font-mincho);
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-quote);
+    color: var(--color-text-sub);
+  }
+
+  .voice-meta {
+    margin-top: 10px;
+    padding-left: 14px;
+    font-size: var(--text-meta);
+    color: var(--color-text-muted);
+  }
+
+  .voices-more {
+    margin-top: 32px;
+    text-align: center;
+  }
+
+  .voices-more-note {
+    margin: 0 0 12px;
+    font-size: var(--text-sub);
+    color: var(--color-text-muted2);
+  }
+
+  .voices-more-link {
+    display: inline-block;
+    border: 0.5px solid var(--color-border-pill);
+    border-radius: var(--radius-pill);
+    padding: 10px 22px;
+    font-size: 13px;
+    color: var(--color-text-sub);
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .voices-more-link:hover {
+    background: rgba(47, 42, 34, 0.05);
+  }
+
+  .voices-disclaimer {
+    margin: 18px 0 0;
+    font-size: var(--text-meta);
+    color: var(--color-text-muted);
+  }
+
+  /* ===== PC（768px以上）===== */
+  @media (min-width: 768px) {
+    .voices {
+      padding: 16px var(--px-section-pc) 72px;
+    }
+
+    .voice-list {
+      max-width: var(--max-width-exp);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .voice {
+      padding: 24px 24px 20px;
+    }
+
+    .voice-quote {
+      font-size: var(--text-body);
+    }
+
+    .voices-more {
+      margin-top: 48px;
+    }
+  }
+</style>

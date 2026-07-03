@@ -1,0 +1,51 @@
+---
+/** 下層ページ末尾の予約セクション。id="reserve" はメニューCTAの遷移先を兼ねる */
+import BookingButtons from './BookingButtons.astro';
+
+interface Props {
+  heading: string;
+  sub: string;
+  locale?: 'ja' | 'en';
+}
+
+const { heading, sub, locale = 'ja' } = Astro.props;
+---
+
+<section id="reserve" class="reservation">
+  <p class="reservation-heading">{heading}</p>
+  <p class="reservation-sub">{sub}</p>
+  <BookingButtons locale={locale} />
+</section>
+
+<style>
+  .reservation {
+    background: var(--color-panel-reservation);
+    padding: 40px 26px 44px;
+    text-align: center;
+  }
+
+  .reservation-heading {
+    margin: 0 0 5px;
+    font-family: var(--font-mincho);
+    font-size: 19px;
+    color: var(--color-leaf-deeper);
+    letter-spacing: 0.05em;
+  }
+
+  .reservation-sub {
+    margin: 0 0 22px;
+    font-size: var(--text-sub);
+    color: var(--color-leaf-mid);
+  }
+
+  @media (min-width: 768px) {
+    .reservation {
+      padding: 64px var(--px-section-pc) 72px;
+    }
+
+    .reservation-heading {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+  }
+</style>
