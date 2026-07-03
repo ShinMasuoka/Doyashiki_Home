@@ -27,13 +27,22 @@ src/
 │   ├── Footer.astro
 │   ├── Header.astro
 │   ├── ImagePlaceholder.astro  ← 写真差し替え前の仮表示
-│   └── MenuOverlay.astro
+│   ├── MenuOverlay.astro
+│   ├── PageShell.astro       ← 下層ページ共通枠（Header/Footer/Menu込み）
+│   ├── PageTitle.astro       ← 下層ページのタイトルブロック
+│   └── ReservationCTA.astro  ← 下層ページ末尾の予約セクション
 ├── config/
 │   └── booking.ts      ← 予約サイトURL（ここだけ編集する）
 ├── content/            # テキストはここで管理（ページに直書きしない）
 │   ├── config.ts       ← コレクション型定義
 │   ├── home/ja.json    ← 日本語トップページのテキスト
 │   ├── home/en.json    ← 英語トップページのテキスト
+│   ├── rooms/ja.json   ← お部屋ページ
+│   ├── amenities/ja.json  ← 設備ページ
+│   ├── around/ja.json  ← 周辺ページ
+│   ├── voices/ja.json  ← お客様の声ページ
+│   ├── news-page/ja.json  ← ニュース一覧ページの枠テキスト
+│   ├── news/*.md       ← ニュース記事（1記事1ファイル、frontmatter: title/date/description/cover）
 │   ├── legal/ja.md     ← 特定商取引法（日本語）
 │   ├── legal/en.md     ← 特定商取引法（英語）
 │   ├── privacy/ja.md   ← プライバシーポリシー（日本語）
@@ -72,8 +81,25 @@ src/
 | `/privacy/` | `pages/privacy.astro` | 未作成 |
 | `/en/privacy/` | `pages/en/privacy.astro` | 未作成 |
 | `/summercamp2026/` | `pages/summercamp2026.astro` | ✅ 完成（姉妹プロジェクト統合分、日本語のみ）|
+| `/rooms/` | `pages/rooms.astro` | ✅ 完成（和室・庭・間取り図の写真は仮）※トップからのリンク未設置 |
+| `/amenities/` | `pages/amenities.astro` | ✅ 完成 ※トップからのリンク未設置 |
+| `/around/` | `pages/around.astro` | ✅ 完成 ※トップからのリンク未設置 |
+| `/voices/` | `pages/voices.astro` | ✅ 完成（声の日付表記は要確認）※トップからのリンク未設置 |
+| `/news/` | `pages/news/index.astro` | ✅ 完成（記事はサンプル3本）※トップからのリンク未設置 |
+| `/news/<slug>/` | `pages/news/[slug].astro` | ✅ 完成（`content/news/*.md` から自動生成）|
 | `/about/` | 未作成 | - |
-| `/rooms/` | 未作成 | - |
+
+下層ページは `PageShell` + `PageTitle` + `ReservationCTA` を組み合わせて作る。
+ニュース記事の追加は `src/content/news/` に `.md` を1ファイル置くだけ（ビルドで一覧・詳細に自動反映）。
+
+## news記事とInstagramの運用ルール（C案・手動連携）
+
+**news記事を新規作成したときは、依頼がなくてもInstagram用の投稿セットを併せて提案すること：**
+
+1. キャプション案（IG向けに文体を調整、絵文字ひかえめ、末尾にハッシュタグ案：#西粟倉 #古民家宿 #おさじの宿堂屋敷 など＋記事の季節ネタ）
+2. 使う写真の指定（記事のcover写真。なければ「IGには写真必須」と伝える）
+
+※将来、A案（GitHub Actions＋Instagram Graph APIによる自動投稿）に移行予定。newsやInstagramの話題が出たら、A案への挑戦を忘れていないかユーザーにリマインドする。
 
 ## デザインの基本
 

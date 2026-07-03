@@ -82,6 +82,18 @@
   --max-width-content: 360px;
   --max-width-faq: 400px;
 
+  /* ===== PC（768px以上のレイアウトでのみ使用）===== */
+  --px-section-pc: 48px;        /* セクション左右パディング */
+  --max-width-wide: 1080px;     /* ヘッダー・ヒーロー内テキストの内容幅 */
+  --max-width-text: 620px;      /* 本文テキストの最大幅 */
+  --max-width-exp: 1040px;      /* 体験セクションの最大幅 */
+  --max-width-access: 760px;    /* アクセスセクションの内容幅 */
+  --max-width-faq-pc: 560px;    /* FAQリストの幅 */
+  --max-width-booking: 460px;   /* 予約ボタン群の幅 */
+  --text-h1-pc: 42px;
+  --text-h2-pc: 28px;
+  --text-h3-pc: 24px;
+
   /* ===== 影 ===== */
   --shadow-page: 0 0 50px rgba(47, 42, 34, 0.22);
   --shadow-btn: 0 8px 20px color-mix(in srgb, var(--color-accent) 34%, transparent);

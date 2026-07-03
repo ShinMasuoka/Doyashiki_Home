@@ -113,6 +113,21 @@ const { title, items, ctaLabel, reserveHref = '#reserve' } = Astro.props;
     font-weight: 600;
     font-size: 15px;
   }
+
+  /* PC：メニュー内容を中央に寄せる */
+  @media (min-width: 768px) {
+    .menu-nav {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .menu-cta {
+      width: 100%;
+      max-width: 432px;
+      margin: 0 auto 36px;
+    }
+  }
 </style>
 
 <script>

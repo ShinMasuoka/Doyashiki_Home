@@ -1,6 +1,6 @@
 ---
 import { getEntry } from 'astro:content';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -16,6 +16,16 @@ import suikaImg from '../assets/images/experiences/suika.jpg';
 import hagamaImg from '../assets/images/experiences/hagama.jpg';
 import heroSubImg from '../assets/images/hero/hero-sub.jpg';
 import heroImg from '../assets/images/hero/hero.jpg';
+import heroWideImg from '../assets/images/hero/hero-wide.jpg';
+
+// ヒーローはPC（768px以上）だけ横長写真に切り替える（モバイルは正方形写真のまま）
+const heroMobile = await getImage({ src: heroImg, width: 1080, format: 'webp' });
+const heroPc = await getImage({
+  src: heroWideImg,
+  widths: [1280, 1920, 2560],
+  sizes: '100vw',
+  format: 'webp',
+});
 
 // 実写真が揃ったものだけここに追加していく
 const expImages: Record<string, ImageMetadata | undefined> = {
@@ -49,13 +59,24 @@ const siteName = 'おさじの宿・堂屋敷';
     <section id="top" class="hero">
       <!-- 将来ドローン動画に差し替える。静止画フォールバックはここに残す -->
       <div class="hero-media">
-        <Image
-          src={heroImg}
-          alt="西粟倉の大木、空へ広がる枝"
-          width={1080}
-          loading="eager"
-          class="hero-img"
-        />
+        <picture>
+          <source
+            media="(min-width: 768px)"
+            srcset={heroPc.srcSet.attribute}
+            sizes="100vw"
+            width={heroPc.attributes.width}
+            height={heroPc.attributes.height}
+          />
+          <img
+            src={heroMobile.src}
+            alt="西粟倉の大木、空へ広がる枝"
+            width={heroMobile.attributes.width}
+            height={heroMobile.attributes.height}
+            loading="eager"
+            decoding="async"
+            class="hero-img"
+          />
+        </picture>
       </div>
       <!-- グラデーションオーバーレイ -->
       <div class="hero-overlay" aria-hidden="true"></div>
@@ -139,12 +160,14 @@ const siteName = 'おさじの宿・堂屋敷';
           ) : (
             <ImagePlaceholder label={`写真：${exp.title}`} class="exp-img" />
           )}
-          <h3 class="exp-title">{exp.title}</h3>
-          <p class="exp-body">{exp.body}</p>
-          <blockquote class="exp-quote">
-            {exp.quote}
-            <span class="exp-quote-from">ご宿泊のお客様より</span>
-          </blockquote>
+          <div class="exp-text">
+            <h3 class="exp-title">{exp.title}</h3>
+            <p class="exp-body">{exp.body}</p>
+            <blockquote class="exp-quote">
+              {exp.quote}
+              <span class="exp-quote-from">ご宿泊のお客様より</span>
+            </blockquote>
+          </div>
         </article>
       ))}
     </section>
@@ -418,7 +441,8 @@ const siteName = 'おさじの宿・堂屋敷';
     border-bottom: 0.5px solid var(--color-border);
   }
 
-  .exp-img {
+  /* ImagePlaceholder にはスコープ属性が付かないため :global で拾う */
+  .exp-article > :global(.exp-img) {
     margin-bottom: 16px;
   }
 
@@ -575,5 +599,139 @@ const siteName = 'おさじの宿・堂屋敷';
     font-family: var(--font-mincho);
     font-size: 15px;
     min-width: 2.4em;
+  }
+
+  /* ===== PC（768px以上）— モバイルの見た目はそのまま、広い画面のレイアウトのみ追加 ===== */
+  @media (min-width: 768px) {
+    .page-wrap {
+      max-width: none;
+      box-shadow: none;
+    }
+
+    /* ヒーロー：全幅・全高 */
+    .hero {
+      height: 100vh;
+      min-height: 640px;
+    }
+
+    .hero-logo {
+      top: 24px;
+      right: 32px;
+      width: 64px;
+      height: 64px;
+    }
+
+    .hero-text {
+      max-width: var(--max-width-wide);
+      margin: 0 auto;
+      padding: 0 var(--px-section-pc) 72px;
+    }
+
+    .hero-heading {
+      font-size: var(--text-h1-pc);
+    }
+
+    .hero-sub {
+      font-size: var(--text-body);
+      max-width: 480px;
+    }
+
+    .scroll-hint {
+      bottom: 22px;
+    }
+
+    /* サブ写真：中央寄せで幅を制限 */
+    .sub-photo {
+      padding: 28px var(--px-section-pc) 0;
+    }
+
+    .sub-photo-img {
+      max-width: 960px;
+      margin: 0 auto;
+      border-radius: var(--radius-image);
+    }
+
+    /* 導入文：本文の最大幅を制限 */
+    .intro {
+      padding: 72px var(--px-section-pc) 76px;
+    }
+
+    .intro-inner {
+      max-width: var(--max-width-text);
+    }
+
+    /* 体験：写真と文章の左右交互 */
+    .section-head {
+      padding: 60px var(--px-section-pc) 12px;
+    }
+
+    .section-title {
+      font-size: var(--text-h2-pc);
+    }
+
+    .exp-article {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      max-width: var(--max-width-exp);
+      margin: 0 auto;
+      padding: 56px var(--px-section-pc);
+    }
+
+    .exp-article:nth-of-type(even) {
+      flex-direction: row-reverse;
+    }
+
+    .exp-article > :global(.exp-img),
+    .exp-article > .exp-images-double {
+      flex: 1 1 0;
+      min-width: 0;
+      margin-bottom: 0;
+    }
+
+    .exp-text {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    .exp-title {
+      font-size: var(--text-h3-pc);
+      margin-bottom: 12px;
+    }
+
+    .exp-body {
+      font-size: var(--text-body);
+    }
+
+    /* 予約 */
+    .reservation {
+      padding: 64px var(--px-section-pc) 72px;
+    }
+
+    .reservation-heading {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    /* アクセス：内容幅を制限して中央寄せ */
+    .access {
+      padding: 64px var(--px-section-pc) 76px;
+    }
+
+    .access .section-head {
+      padding: 0 0 16px;
+    }
+
+    .nav-note,
+    .map-wrap,
+    .access-info {
+      max-width: var(--max-width-access);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .map-iframe {
+      height: 380px;
+    }
   }
 </style>

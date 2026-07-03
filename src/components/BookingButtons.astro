@@ -138,4 +138,12 @@ const secondaryLabels: Record<keyof typeof BOOKING_URLS, string> = {
   .pill:hover {
     background: rgba(47, 42, 34, 0.05);
   }
+
+  /* PC：ボタン群が横に伸びすぎないよう幅を制限 */
+  @media (min-width: 768px) {
+    .booking-wrapper {
+      max-width: var(--max-width-booking);
+      margin: 0 auto;
+    }
+  }
 </style>

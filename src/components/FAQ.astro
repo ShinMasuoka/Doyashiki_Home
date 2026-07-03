@@ -107,6 +107,22 @@ const { heading, items } = Astro.props;
     color: var(--color-text-weak);
     line-height: var(--leading-base);
   }
+
+  /* PC：リスト幅を少し広げる */
+  @media (min-width: 768px) {
+    .faq-section {
+      padding: 64px var(--px-section-pc) 72px;
+    }
+
+    .faq-heading {
+      font-size: var(--text-h2-pc);
+      margin-bottom: 32px;
+    }
+
+    .faq-list {
+      max-width: var(--max-width-faq-pc);
+    }
+  }
 </style>
 
 <script>

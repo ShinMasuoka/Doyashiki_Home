@@ -66,4 +66,11 @@ const year = new Date().getFullYear();
     display: flex;
     justify-content: center;
   }
+
+  /* PC：内容を中央の --max-width-wide 幅に収める */
+  @media (min-width: 768px) {
+    footer {
+      padding: 24px max(32px, (100% - var(--max-width-wide)) / 2);
+    }
+  }
 </style>

@@ -2,9 +2,11 @@
 interface Props {
   locale: 'ja' | 'en';
   siteName: string;
+  /** ロゴのリンク先。トップページ以外では "/" を渡す */
+  homeHref?: string;
 }
 
-const { locale, siteName } = Astro.props;
+const { locale, siteName, homeHref = '#top' } = Astro.props;
 const altLocale = locale === 'ja' ? 'en' : 'ja';
 // 日本語はルート直下（無接頭辞）、英語は /en/ 配下
 const altHref = altLocale === 'ja' ? '/' : `/${altLocale}/`;
@@ -13,7 +15,7 @@ const langAltText = locale === 'ja' ? 'EN' : '日本語';
 ---
 
 <header id="site-header">
-  <a href="#top" class="logo-link">{siteName}</a>
+  <a href={homeHref} class="logo-link">{siteName}</a>
   <div class="header-right">
     <a href={altHref} class="lang-pill" aria-label={`Switch to ${altLocale}`}>
       <span class="lang-current">{langPillText}</span>
@@ -94,5 +96,12 @@ const langAltText = locale === 'ja' ? 'EN' : '日本語';
 
   .hamburger span.short {
     width: 16px;
+  }
+
+  /* PC：内容を中央の --max-width-wide 幅に収める */
+  @media (min-width: 768px) {
+    header {
+      padding: 16px max(32px, (100% - var(--max-width-wide)) / 2);
+    }
   }
 </style>
