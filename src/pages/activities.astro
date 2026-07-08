@@ -1,0 +1,233 @@
+---
+import { getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import PageShell from '../components/PageShell.astro';
+import PageTitle from '../components/PageTitle.astro';
+import ReservationCTA from '../components/ReservationCTA.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+
+import riverImg from '../assets/images/experiences/river.jpg';
+import hagamaImg from '../assets/images/experiences/hagama.jpg';
+import fireImg from '../assets/images/experiences/fire.jpg';
+import engawaImg from '../assets/images/experiences/suika.jpg';
+import forestImg from '../assets/images/experiences/forest.jpg';
+
+// 実写真が揃ったものだけここに追加していく（流しソーメン・星空・オオサンショウウオは写真待ち）
+const activityImages: Record<string, ImageMetadata | undefined> = {
+  river: riverImg,
+  hagama: hagamaImg,
+  fire: fireImg,
+  engawa: engawaImg,
+  forest: forestImg,
+};
+
+const data = (await getEntry('activities', 'ja'))!.data;
+---
+
+<PageShell
+  title={data.seo.title}
+  description={data.seo.description}
+  canonicalPath="/activities/"
+>
+  <PageTitle label={data.label} heading={data.heading} lead={data.lead} />
+
+  <!-- ===== 各体験 ===== -->
+  <section class="activities">
+    {data.activities.map((activity, i) => (
+      <article class:list={['act-article', i < data.activities.length - 1 && 'act-article--border']}>
+        {activityImages[activity.id] ? (
+          <Image
+            src={activityImages[activity.id]!}
+            alt={activity.title}
+            width={960}
+            class="act-img real-img"
+          />
+        ) : (
+          <ImagePlaceholder label={`写真：${activity.title}`} class="act-img" />
+        )}
+        <div class="act-text">
+          <div class="act-head">
+            <h2 class="act-title">{activity.title}</h2>
+            {activity.season && <span class="act-season">{activity.season}</span>}
+          </div>
+          <p class="act-body">{activity.body}</p>
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <!-- ===== 夏合宿の紹介 ===== -->
+  <section class="camp">
+    <p class="camp-label">{data.camp.label}</p>
+    <h2 class="camp-heading">{data.camp.heading}</h2>
+    <p class="camp-body">{data.camp.body}</p>
+    <a href={data.camp.link} class="camp-link">{data.camp.linkLabel}</a>
+  </section>
+
+  <ReservationCTA heading={data.cta.heading} sub={data.cta.sub} />
+</PageShell>
+
+<style>
+  /* ===== 各体験 ===== */
+  .activities {
+    background: var(--color-panel);
+    padding: 8px var(--px-section) 8px;
+  }
+
+  .act-article {
+    padding: 24px 0;
+  }
+
+  .act-article--border {
+    border-bottom: 0.5px solid var(--color-border);
+  }
+
+  /* ImagePlaceholder にはスコープ属性が付かないため :global で拾う */
+  .act-article > :global(.act-img) {
+    margin-bottom: 16px;
+  }
+
+  .real-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-image);
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
+  }
+
+  .act-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .act-title {
+    margin: 0;
+    font-family: var(--font-mincho);
+    font-weight: 600;
+    font-size: var(--text-h3);
+    letter-spacing: var(--tracking-heading-sm);
+  }
+
+  .act-season {
+    border: 0.5px solid var(--color-border-pill);
+    border-radius: var(--radius-pill);
+    padding: 2px 9px;
+    font-size: 11px;
+    color: var(--color-accent);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+
+  .act-body {
+    margin: 0;
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-exp);
+    color: var(--color-text-sub);
+  }
+
+  /* ===== 夏合宿の紹介 ===== */
+  .camp {
+    background: var(--color-panel-reservation);
+    padding: var(--py-section) var(--px-section-lg);
+    text-align: center;
+  }
+
+  .camp-label {
+    margin: 0 0 5px;
+    font-size: var(--text-label);
+    letter-spacing: var(--tracking-label);
+    color: var(--color-leaf);
+    font-weight: 600;
+  }
+
+  .camp-heading {
+    margin: 0 0 14px;
+    font-family: var(--font-mincho);
+    font-weight: 500;
+    font-size: var(--text-h2);
+    letter-spacing: var(--tracking-heading-sm);
+    color: var(--color-leaf-deeper);
+    line-height: 1.6;
+  }
+
+  .camp-body {
+    margin: 0 0 20px;
+    text-align: left;
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-body);
+    color: var(--color-leaf-deeper);
+  }
+
+  .camp-link {
+    display: inline-block;
+    padding: 12px 26px;
+    border: 1px solid var(--color-leaf);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-body-sm);
+    color: var(--color-leaf-dark);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+
+  .camp-link:hover {
+    background: var(--color-leaf);
+    color: #fff;
+  }
+
+  /* ===== PC（768px以上）===== */
+  @media (min-width: 768px) {
+    .activities {
+      padding: 8px var(--px-section-pc) 24px;
+    }
+
+    /* 写真と文章の左右交互 */
+    .act-article {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      max-width: var(--max-width-exp);
+      margin: 0 auto;
+      padding: 48px 0;
+    }
+
+    .act-article:nth-of-type(even) {
+      flex-direction: row-reverse;
+    }
+
+    .act-article > :global(.act-img) {
+      flex: 1 1 0;
+      min-width: 0;
+      margin-bottom: 0;
+    }
+
+    .act-text {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    .act-title {
+      font-size: var(--text-h3-pc);
+    }
+
+    .act-head {
+      margin-bottom: 12px;
+    }
+
+    .act-body {
+      font-size: var(--text-body);
+    }
+
+    .camp {
+      padding: 64px var(--px-section-pc);
+    }
+
+    .camp-body {
+      max-width: var(--max-width-text);
+      margin: 0 auto 24px;
+      text-align: center;
+    }
+  }
+</style>

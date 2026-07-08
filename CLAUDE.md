@@ -39,6 +39,7 @@ src/
 │   ├── home/en.json    ← 英語トップページのテキスト
 │   ├── rooms/ja.json   ← お部屋ページ
 │   ├── amenities/ja.json  ← 設備ページ
+│   ├── activities/ja.json ← 体験・アクティビティページ
 │   ├── around/ja.json  ← 周辺ページ
 │   ├── voices/ja.json  ← お客様の声ページ
 │   ├── news-page/ja.json  ← ニュース一覧ページの枠テキスト
@@ -83,6 +84,7 @@ src/
 | `/summercamp2026/` | `pages/summercamp2026.astro` | ✅ 完成（姉妹プロジェクト統合分、日本語のみ）|
 | `/rooms/` | `pages/rooms.astro` | ✅ 完成（和室・庭・間取り図の写真は仮）※トップからのリンク未設置 |
 | `/amenities/` | `pages/amenities.astro` | ✅ 完成 ※トップからのリンク未設置 |
+| `/activities/` | `pages/activities.astro` | ✅ 完成（流しソーメン・星空・オオサンショウウオの写真は仮）※トップからのリンク未設置 |
 | `/around/` | `pages/around.astro` | ✅ 完成 ※トップからのリンク未設置 |
 | `/voices/` | `pages/voices.astro` | ✅ 完成（声の日付表記は要確認）※トップからのリンク未設置 |
 | `/news/` | `pages/news/index.astro` | ✅ 完成（記事はサンプル3本）※トップからのリンク未設置 |

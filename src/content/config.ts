@@ -148,6 +148,26 @@ const aroundCollection = defineCollection({
   }),
 });
 
+const activitiesCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    ...pageBase,
+    activities: z.array(z.object({
+      id: z.string(),
+      title: z.string(),
+      season: z.string().optional(),
+      body: z.string(),
+    })),
+    camp: z.object({
+      label: z.string(),
+      heading: z.string(),
+      body: z.string(),
+      linkLabel: z.string(),
+      link: z.string(),
+    }),
+  }),
+});
+
 const voicesCollection = defineCollection({
   type: 'data',
   schema: z.object({
@@ -189,6 +209,7 @@ export const collections = {
   home: homeCollection,
   rooms: roomsCollection,
   amenities: amenitiesCollection,
+  activities: activitiesCollection,
   around: aroundCollection,
   voices: voicesCollection,
   'news-page': newsPageCollection,
