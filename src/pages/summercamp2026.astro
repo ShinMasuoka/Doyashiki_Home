@@ -42,6 +42,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,247,242,
 .scroll-indicator{position:absolute;bottom:1.6rem;left:50%;display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.85);font-size:0.7rem;font-weight:700;letter-spacing:0.2em;animation:scroll-bounce 2.2s ease-in-out infinite}
 .scroll-indicator svg{width:18px;height:18px}
 @keyframes scroll-bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+.deadline-badge{position:absolute;top:calc(64px + 1.5rem);left:2rem;width:min(380px,42vw);z-index:5}
+.deadline-badge img{display:block;width:100%;height:auto;transform:rotate(-4deg);filter:drop-shadow(0 0 3px rgba(255,255,255,0.95)) drop-shadow(0 0 12px rgba(255,255,255,0.75));animation:deadline-pulse 2.4s ease-in-out infinite}
+@keyframes deadline-pulse{0%,100%{transform:rotate(-4deg) scale(1)}50%{transform:rotate(-4deg) scale(1.05)}}
 .photo-band{display:grid;grid-template-columns:2fr 1fr 1fr;height:340px;gap:3px}
 .photo-band-item{overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;font-size:0.75rem}
 .photo-band-item svg{opacity:0.5}
@@ -223,6 +226,7 @@ footer{background:var(--gd);color:rgba(255,255,255,0.5);text-align:center;paddin
   .hero-buttons{flex-direction:column;gap:0.6rem}
   .btn-primary{justify-content:center;padding:0.8rem 1.5rem;font-size:0.9rem}
   .hero-seats{display:none}
+  .deadline-badge{top:calc(64px + 1rem);left:50%;transform:translateX(-50%);width:min(85vw,330px)}
   .scroll-indicator{bottom:1rem}
   .photo-band{grid-template-columns:1fr;height:auto}
   .photo-band-item{height:200px}
@@ -307,6 +311,9 @@ footer{background:var(--gd);color:rgba(255,255,255,0.5);text-align:center;paddin
     <div class="seats-label">各回定員</div>
     <div class="seats-num">8<span style="font-size:1rem;opacity:0.7;">名</span></div>
     <div class="seats-sub">少人数制</div>
+  </div>
+  <div class="deadline-badge">
+    <img src="/summercamp2026/deadline_20260713.png" alt="受付は7月13日正午まで">
   </div>
   <div class="scroll-indicator">
     <span>SCROLL</span>
